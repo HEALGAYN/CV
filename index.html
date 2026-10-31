@@ -3,1117 +3,1050 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Henry Gallardo Yntor — PI System Specialist & Tech Lead</title>
+<title>Henry Gallardo Yntor · Especialista Senior AVEVA PI System</title>
+<meta name="description" content="Ingeniero de Sistemas y Especialista Senior AVEVA PI System. Más de 8 años administrando, integrando y evolucionando PI System en operaciones mineras y energéticas de Perú, Chile y Brasil.">
+<meta property="og:title" content="Henry Gallardo Yntor · Especialista Senior AVEVA PI System">
+<meta property="og:description" content="PI System, integración OT/IT, infraestructura y gestión de proyectos para operaciones 24/7.">
+<meta property="og:type" content="profile">
+<meta name="theme-color" content="#070b14">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════════════════════
-   TOKENS — Blueprint Industrial Light
-══════════════════════════════════════════════════════ */
+/* ── Tokens ─────────────────────────────────────────── */
 :root {
-  --paper:    #F5F7FA;
-  --white:    #FFFFFF;
-  --ink:      #0D1117;
-  --ink2:     #1E2937;
-  --ink3:     #374557;
-  --muted:    #6B7C93;
-  --faint:    #A8B6C8;
-  --blue-1:   #0046B8;
-  --blue-2:   #0062FF;
-  --blue-3:   #2980FF;
-  --blue-lt:  #E8F0FF;
-  --blue-mid: #C5D8FF;
-  --teal:     #00A896;
-  --amber:    #D97706;
-  --red:      #DC2626;
-  --green:    #059669;
-  --border:   #D4DCEB;
-  --border2:  #E8EFF7;
-  --shadow-sm: 0 1px 4px rgba(0,70,184,.06), 0 2px 12px rgba(0,0,0,.04);
-  --shadow-md: 0 4px 20px rgba(0,70,184,.08), 0 8px 32px rgba(0,0,0,.06);
-  --shadow-lg: 0 12px 48px rgba(0,70,184,.12), 0 24px 64px rgba(0,0,0,.08);
-  --ff-head:  'Clash Display', sans-serif;
-  --ff-body:  'Manrope', sans-serif;
-  --ff-code:  'JetBrains Mono', monospace;
+  color-scheme: dark;
+  --bg:       #070b14;
+  --bg-2:     #0b1120;
+  --surface:  #0f1628;
+  --surface-2:#141c32;
+  --line:     rgba(255,255,255,.08);
+  --line-2:   rgba(255,255,255,.14);
+  --text:     #e8ecf4;
+  --text-2:   #b4bdd0;
+  --muted:    #7d879c;
+  --accent:   #5b8cff;
+  --accent-2: #38d6f5;
+  --live:     #3ee2a0;
+  --warn:     #f5b453;
+  --glow:     rgba(91,140,255,.35);
+  --radius:   18px;
+  --ff:       'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ff-mono:  'Geist Mono', ui-monospace, 'Cascadia Code', monospace;
+  --max:      1180px;
 }
 
-/* ══════════════════════════════════════════════════════
-   BASE
-══════════════════════════════════════════════════════ */
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior:smooth; font-size:16px }
+/* ── Base ───────────────────────────────────────────── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100% }
 body {
-  background: var(--paper);
-  color: var(--ink2);
-  font-family: var(--ff-body);
-  font-weight: 400;
-  line-height: 1.65;
-  overflow-x: hidden;
+  background: var(--bg); color: var(--text);
+  font-family: var(--ff); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-::selection { background: var(--blue-2); color: #fff }
-a { color: var(--blue-2); text-decoration: none }
+a { color: inherit; text-decoration: none }
+img, svg { display: block }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 6px }
+::selection { background: var(--accent); color: #fff }
 
-/* Blueprint dot grid */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: radial-gradient(circle, var(--blue-mid) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none; z-index: 0; opacity: .35;
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px }
+.mono { font-family: var(--ff-mono) }
+.grad {
+  background: linear-gradient(100deg, var(--text) 0%, var(--accent) 45%, var(--accent-2) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
-/* ══════════════════════════════════════════════════════
-   NAV
-══════════════════════════════════════════════════════ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: .75rem 3rem;
-  background: rgba(245,247,250,.92);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 0 var(--border2), 0 4px 20px rgba(0,0,0,.04);
+/* ── Nav ────────────────────────────────────────────── */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  transition: background .3s, border-color .3s;
+  border-bottom: 1px solid transparent;
 }
-.nav-brand {
-  font-family: var(--ff-head); font-weight: 700; font-size: .95rem;
-  color: var(--ink); letter-spacing: .01em;
-  display: flex; align-items: center; gap: .5rem;
+.nav.scrolled { background: rgba(7,11,20,.78); backdrop-filter: blur(16px) saturate(160%); border-color: var(--line) }
+.nav-in { display: flex; align-items: center; gap: 28px; height: 68px }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -.01em }
+.mark {
+  width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center;
+  background: linear-gradient(140deg, var(--accent), var(--accent-2));
+  font-family: var(--ff-mono); font-size: 13px; font-weight: 500; color: #04101f;
 }
-.nav-brand-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--blue-2);
-  box-shadow: 0 0 0 3px rgba(0,98,255,.2);
-  animation: dotPulse 3s infinite;
-}
-@keyframes dotPulse { 0%,100%{box-shadow:0 0 0 3px rgba(0,98,255,.2)} 50%{box-shadow:0 0 0 6px rgba(0,98,255,.08)} }
-.nav-tag {
-  font-family: var(--ff-code); font-size: .58rem; letter-spacing: .12em;
-  color: var(--green); text-transform: uppercase;
-  border: 1px solid rgba(5,150,105,.25);
-  padding: .2rem .6rem; border-radius: 100px;
-  background: rgba(5,150,105,.06);
-  display: flex; align-items: center; gap: .35rem;
-}
-.nav-tag::before { content:''; width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s infinite }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-.nav-links { display: flex; gap: 2rem; list-style: none }
-.nav-links a {
-  font-size: .75rem; font-weight: 600; letter-spacing: .06em;
-  text-transform: uppercase; color: var(--muted);
-  transition: color .2s; position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
-  height: 2px; background: var(--blue-2);
-  transform: scaleX(0); transition: transform .2s;
-}
-.nav-links a:hover { color: var(--blue-2) }
-.nav-links a:hover::after { transform: scaleX(1) }
-
-/* ══════════════════════════════════════════════════════
-   HERO
-══════════════════════════════════════════════════════ */
-#hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 7rem 2rem 4rem;
-  position: relative; overflow: hidden;
-  background: linear-gradient(160deg, var(--white) 0%, #EBF2FF 50%, #F0F4FF 100%);
-}
-
-/* Large blueprint cross-hairs background */
-#hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(var(--blue-mid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--blue-mid) 1px, transparent 1px),
-    linear-gradient(rgba(0,98,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,98,255,.04) 1px, transparent 1px);
-  background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
-  opacity: .5; pointer-events: none;
-}
-
-/* diagonal accent strip */
-#hero::after {
-  content: '';
-  position: absolute; top: 0; right: 0;
-  width: 55%; height: 100%;
-  background: linear-gradient(135deg, transparent 40%, rgba(0,70,184,.04) 100%);
-  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: relative; z-index: 2;
-  max-width: 960px; width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-  align-items: center;
-}
-
-/* left col */
-.hero-left {}
-.hero-eyebrow {
-  font-family: var(--ff-code); font-size: .65rem;
-  color: var(--blue-2); letter-spacing: .2em; text-transform: uppercase;
-  display: flex; align-items: center; gap: .6rem;
-  margin-bottom: 1.2rem;
-  animation: fadeUp .6s ease both;
-}
-.hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--blue-2) }
-
-.hero-name {
-  font-family: var(--ff-head); font-weight: 700;
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
-  line-height: 1.0; letter-spacing: -.02em; color: var(--ink);
-  animation: fadeUp .7s .08s ease both;
-}
-.hero-name em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--blue-1) 0%, var(--blue-3) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-
-.hero-subtitle {
-  font-size: 1.05rem; color: var(--muted); margin-top: .9rem;
-  font-weight: 400; line-height: 1.6;
-  animation: fadeUp .7s .16s ease both;
-}
-.hero-subtitle strong { color: var(--ink3); font-weight: 600 }
-
-.hero-chips {
-  display: flex; flex-wrap: wrap; gap: .5rem;
-  margin-top: 1.6rem;
-  animation: fadeUp .7s .24s ease both;
-}
-.hero-chip {
-  font-family: var(--ff-code); font-size: .62rem;
-  padding: .3rem .8rem; border-radius: 4px;
-  background: var(--blue-lt); color: var(--blue-1);
-  border: 1px solid var(--blue-mid);
-  font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
-  transition: all .2s;
-}
-.hero-chip:hover { background: var(--blue-2); color: #fff; border-color: var(--blue-2); transform: translateY(-2px) }
-
-.hero-contact {
-  display: flex; flex-direction: column; gap: .45rem;
-  margin-top: 1.8rem;
-  animation: fadeUp .7s .3s ease both;
-}
-.hci {
-  display: flex; align-items: center; gap: .55rem;
-  font-size: .82rem; color: var(--muted);
-}
-.hci svg { width:14px; height:14px; color:var(--blue-2); flex-shrink:0 }
-.hci a { color: var(--blue-2); font-weight:500 }
-
-.hero-ctas {
-  display: flex; gap: .8rem; flex-wrap: wrap;
-  margin-top: 2rem;
-  animation: fadeUp .7s .36s ease both;
-}
-
-/* RIGHT col — stats card */
-.hero-right {
-  animation: fadeIn .9s .2s ease both;
-}
-.hero-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: var(--shadow-lg);
-  position: relative; overflow: hidden;
-}
-.hero-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--blue-1), var(--blue-3), var(--teal));
-}
-.hc-title {
-  font-family: var(--ff-code); font-size: .6rem; color: var(--muted);
-  letter-spacing: .18em; text-transform: uppercase; margin-bottom: 1.4rem;
-}
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem }
-.stat-box {
-  background: var(--paper); border: 1px solid var(--border2);
-  border-radius: 12px; padding: 1.1rem .9rem; text-align: center;
-  transition: all .25s;
-}
-.stat-box:hover { border-color: var(--blue-2); background: var(--blue-lt); transform: translateY(-2px); box-shadow: var(--shadow-sm) }
-.stat-num {
-  font-family: var(--ff-head); font-weight: 700; font-size: 2rem;
-  color: var(--blue-2); line-height: 1; display: block;
-}
-.stat-lbl { font-size: .65rem; color: var(--muted); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-top: .3rem; display: block }
-
-.availability-badge {
-  display: flex; align-items: center; gap: .6rem;
-  background: rgba(5,150,105,.06); border: 1px solid rgba(5,150,105,.2);
-  border-radius: 10px; padding: .9rem 1rem; margin-top: 1rem;
-}
-.av-dot { width:10px;height:10px;border-radius:50%;background:var(--green);flex-shrink:0;animation:dotPulse 2s infinite }
-.av-text { font-size: .82rem; color: var(--ink3) }
-.av-text strong { color: var(--green); font-weight: 600 }
-
-/* BUTTONS */
+.nav-links { display: flex; gap: 26px; margin-left: auto; list-style: none }
+.nav-links a { font-size: 14px; color: var(--text-2); transition: color .2s }
+.nav-links a:hover, .nav-links a.active { color: var(--text) }
 .btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--ff-body); font-weight: 700; font-size: .82rem;
-  padding: .75rem 1.6rem; border-radius: 8px; cursor: pointer;
-  border: none; transition: all .22s; letter-spacing: .01em;
-  position: relative; overflow: hidden;
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 14px/1 var(--ff); padding: 12px 18px; border-radius: 10px;
+  border: 1px solid var(--line-2); color: var(--text); background: rgba(255,255,255,.03);
+  transition: background .2s, border-color .2s, transform .2s; cursor: pointer;
 }
-.btn::after {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(255,255,255,.15); opacity: 0; transition: opacity .2s;
-}
-.btn:hover::after { opacity: 1 }
-.btn-primary {
-  background: var(--blue-2); color: #fff;
-  box-shadow: 0 4px 16px rgba(0,98,255,.35), 0 1px 0 rgba(255,255,255,.2) inset;
-}
-.btn-primary:hover { background: var(--blue-1); box-shadow: 0 8px 28px rgba(0,98,255,.45); transform: translateY(-2px) }
-.btn-outline {
-  background: transparent; color: var(--blue-2);
-  border: 1.5px solid var(--blue-mid);
-}
-.btn-outline:hover { background: var(--blue-lt); border-color: var(--blue-2); transform: translateY(-2px) }
-.btn-teal {
-  background: var(--teal); color: #fff;
-  box-shadow: 0 4px 16px rgba(0,168,150,.3);
-}
-.btn-teal:hover { filter: brightness(1.1); transform: translateY(-2px) }
-.btn svg { width:16px;height:16px }
+.btn:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.24) }
+.btn-primary { background: var(--text); color: #070b14; border-color: var(--text) }
+.btn-primary:hover { background: #fff; transform: translateY(-1px) }
+.btn svg { width: 16px; height: 16px }
+.nav .btn { padding: 10px 14px }
 
-/* ══════════════════════════════════════════════════════
-   SECTION SYSTEM
-══════════════════════════════════════════════════════ */
-.sec { padding: 6rem 2.5rem; max-width: 1160px; margin: 0 auto; position: relative; z-index: 1 }
-.sec-full { padding: 0; }
-.sec-inner { max-width: 1160px; margin: 0 auto; padding: 5rem 2.5rem }
+/* ── Hero ───────────────────────────────────────────── */
+.hero { position: relative; padding: 148px 0 72px; overflow: hidden; isolation: isolate }
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(60% 50% at 70% 0%, rgba(91,140,255,.22), transparent 70%),
+    radial-gradient(40% 40% at 10% 20%, rgba(56,214,245,.10), transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: .5;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 60% at 50% 20%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 20%, #000 30%, transparent 80%);
+}
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 6px 14px 6px 6px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,.03);
+  font-size: 13px; color: var(--text-2);
+}
+.pill b {
+  font: 500 11px/1 var(--ff-mono); letter-spacing: .04em; text-transform: uppercase;
+  padding: 5px 9px; border-radius: 999px; color: #04101f;
+  background: linear-gradient(140deg, var(--accent), var(--accent-2));
+}
+.hero h1 {
+  margin-top: 26px; max-width: 900px;
+  font-size: clamp(2.5rem, 6.4vw, 5rem); line-height: 1.02; letter-spacing: -.045em; font-weight: 600;
+}
+.hero h1 .dim { color: var(--muted) }
+.hero-lead { margin-top: 24px; max-width: 640px; font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--text-2) }
+.hero-lead strong { color: var(--text); font-weight: 500 }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; font: 400 13px var(--ff-mono); color: var(--muted) }
+.hero-meta span { display: inline-flex; align-items: center; gap: 8px }
+.dot-live { width: 7px; height: 7px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 0 rgba(62,226,160,.6); animation: ping 2.4s infinite }
+@keyframes ping { 0%{box-shadow:0 0 0 0 rgba(62,226,160,.55)} 70%{box-shadow:0 0 0 9px rgba(62,226,160,0)} 100%{box-shadow:0 0 0 0 rgba(62,226,160,0)} }
 
-.sec-eyebrow {
-  font-family: var(--ff-code); font-size: .62rem; color: var(--blue-2);
-  letter-spacing: .22em; text-transform: uppercase;
-  display: flex; align-items: center; gap: .7rem; margin-bottom: .7rem;
+/* Console (tabbed panel) */
+.console {
+  margin-top: 64px; border-radius: 22px; padding: 1px;
+  background: linear-gradient(160deg, rgba(91,140,255,.55), rgba(255,255,255,.06) 35%, rgba(56,214,245,.35));
+  box-shadow: 0 40px 120px -40px var(--glow);
 }
-.sec-eyebrow::before { content:''; width:24px; height:2px; background:var(--blue-2); border-radius:2px }
+.console-in { border-radius: 21px; background: linear-gradient(180deg, var(--surface), var(--bg-2)); overflow: hidden }
+.console-bar {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 14px 18px; border-bottom: 1px solid var(--line);
+}
+.lights { display: flex; gap: 6px }
+.lights i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2) }
+.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 11px; background: rgba(255,255,255,.04); border: 1px solid var(--line) }
+.tab {
+  font: 500 13px/1 var(--ff); color: var(--muted); background: none; border: 0;
+  padding: 9px 14px; border-radius: 8px; cursor: pointer; transition: color .2s, background .2s;
+}
+.tab[aria-selected="true"] { color: var(--text); background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line-2) }
+.console-status { margin-left: auto; font: 400 12px var(--ff-mono); color: var(--muted); display: flex; align-items: center; gap: 8px }
+.panel { padding: 34px 28px 30px }
+.panel[hidden] { display: none }
+.panel-cap { font: 400 12px var(--ff-mono); color: var(--muted); letter-spacing: .04em; margin-bottom: 22px }
 
-.sec-title {
-  font-family: var(--ff-head); font-weight: 700;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: .5rem;
+/* Architecture diagram */
+.arch { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 56px; align-items: center }
+.arch-col { display: flex; flex-direction: column; gap: 10px; position: relative }
+.arch-col h4 { font: 500 11px var(--ff-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 4px }
+.node {
+  position: relative; padding: 11px 14px; border-radius: 11px;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,.025);
+  font-size: 14px; color: var(--text-2);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
 }
-.sec-title .acc { color: var(--blue-2) }
+.node small { font: 400 11px var(--ff-mono); color: var(--muted) }
+.core {
+  padding: 22px; border-radius: 16px; position: relative;
+  border: 1px solid rgba(91,140,255,.45);
+  background: radial-gradient(120% 120% at 50% 0%, rgba(91,140,255,.16), rgba(15,22,40,.6));
+  box-shadow: 0 0 60px -20px var(--glow);
+}
+.core-title { display: flex; align-items: center; justify-content: space-between; font-weight: 600; margin-bottom: 14px }
+.core-title span { font: 400 11px var(--ff-mono); color: var(--live); display: inline-flex; align-items: center; gap: 6px }
+.core-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.core-grid div { font-size: 13px; padding: 9px 11px; border-radius: 9px; background: rgba(7,11,20,.55); border: 1px solid var(--line); color: var(--text-2) }
+.core-grid div.full { grid-column: span 2 }
+/* beams between columns */
+.arch-col.src::after, .arch-col.out::before {
+  content: ''; position: absolute; top: 50%; width: 56px; height: 2px; transform: translateY(-50%);
+  background: repeating-linear-gradient(90deg, var(--accent-2) 0 8px, transparent 8px 16px);
+  background-size: 32px 2px; animation: flow 1.1s linear infinite; opacity: .8;
+}
+.arch-col.src::after { right: -56px }
+.arch-col.out::before { left: -56px }
+@keyframes flow { to { background-position: 32px 0 } }
 
-.sec-sub { font-size: 1rem; color: var(--muted); max-width: 560px; margin-bottom: 3rem; line-height: 1.7 }
+/* Step flow (tabs 2 and 3) */
+.flow { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 28px; counter-reset: s }
+.step {
+  position: relative; padding: 18px 16px; border-radius: 14px;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,.025);
+}
+.step::before {
+  counter-increment: s; content: counter(s, decimal-leading-zero);
+  font: 500 11px var(--ff-mono); color: var(--accent-2); display: block; margin-bottom: 10px;
+}
+.step:not(:last-child)::after {
+  content: ''; position: absolute; top: 50%; right: -28px; width: 28px; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--accent-2) 0 6px, transparent 6px 12px);
+  background-size: 24px 2px; animation: flow 1s linear infinite;
+}
+.step b { display: block; font-weight: 600; font-size: 15px; margin-bottom: 4px }
+.step p { font-size: 13px; color: var(--muted); line-height: 1.5 }
+.step.hl { border-color: rgba(91,140,255,.5); background: rgba(91,140,255,.08) }
+.flow-foot { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px }
 
-/* divider */
-.sec-divider {
-  border: none; border-top: 1px solid var(--border);
-  margin: 0; position: relative; z-index: 1;
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font: 400 12px/1 var(--ff-mono); color: var(--text-2);
+  padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: rgba(255,255,255,.03);
 }
+.chip.acc { color: var(--accent-2); border-color: rgba(56,214,245,.3); background: rgba(56,214,245,.06) }
 
-/* Reveal */
-.rv { opacity:0; transform:translateY(24px); transition:opacity .65s cubic-bezier(.2,0,.2,1),transform .65s cubic-bezier(.2,0,.2,1) }
-.rv.on { opacity:1; transform:none }
-.rv.d1{transition-delay:.1s} .rv.d2{transition-delay:.2s} .rv.d3{transition-delay:.3s} .rv.d4{transition-delay:.4s}
+/* Hero tiles */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 28px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--line) }
+.tile { background: var(--bg-2); padding: 22px 22px 20px }
+.tile-n { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; letter-spacing: -.03em; line-height: 1 }
+.tile-l { margin-top: 8px; font-size: 13.5px; color: var(--muted); line-height: 1.45 }
 
-/* ══════════════════════════════════════════════════════
-   ABOUT
-══════════════════════════════════════════════════════ */
-#about { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border) }
-.about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: start }
-.about-text p { color: var(--ink3); margin-bottom: 1.1rem; font-size: 1.02rem; line-height: 1.8 }
-.about-text strong { color: var(--ink); font-weight: 600 }
-.hl { color: var(--blue-2); font-weight: 600 }
+/* ── Marquee ────────────────────────────────────────── */
+.trust { padding: 40px 0 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2) }
+.trust p { text-align: center; font: 400 12px var(--ff-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px }
+.marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent) }
+.marquee-track { display: flex; gap: 56px; width: max-content; animation: scroll 46s linear infinite; padding-bottom: 16px }
+.marquee:hover .marquee-track { animation-play-state: paused }
+.marquee-track span { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 600; letter-spacing: -.02em; color: var(--text-2); white-space: nowrap; opacity: .75 }
+.marquee-track span em { font-style: normal; font-weight: 400; color: var(--muted); font-size: .7em; margin-left: 8px; font-family: var(--ff-mono) }
+@keyframes scroll { to { transform: translateX(-50%) } }
 
-.metrics-panel { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem }
-.m-card {
-  background: var(--paper); border: 1px solid var(--border);
-  border-radius: 14px; padding: 1.4rem 1.2rem;
-  transition: all .3s; position: relative; overflow: hidden;
-}
-.m-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue-2), var(--teal));
-  transform: scaleX(0); transform-origin: left; transition: transform .3s;
-}
-.m-card:hover { border-color: var(--blue-2); box-shadow: var(--shadow-md); transform: translateY(-3px) }
-.m-card:hover::after { transform: scaleX(1) }
-.m-card.wide { grid-column: span 2 }
-.m-icon { font-size: 1.6rem; margin-bottom: .6rem }
-.m-num { font-family: var(--ff-head); font-weight: 700; font-size: 2rem; color: var(--blue-2); line-height: 1 }
-.m-lbl { font-family: var(--ff-code); font-size: .58rem; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; margin-top: .2rem }
-.m-desc { font-size: .8rem; color: var(--muted); margin-top: .5rem; line-height: 1.5 }
+/* ── Sections ───────────────────────────────────────── */
+section.sec { padding: 120px 0 0 }
+.sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 48px }
+.eyebrow { font: 500 12px var(--ff-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 16px; display: flex; align-items: center; gap: 10px }
+.eyebrow::before { content: ''; width: 18px; height: 1px; background: currentColor }
+.sec h2 { font-size: clamp(2rem, 4.2vw, 3.3rem); line-height: 1.04; letter-spacing: -.04em; font-weight: 600 }
+.sec h2 .dim { color: var(--muted) }
+.sec-sub { color: var(--text-2); font-size: 1.05rem; max-width: 520px }
 
-/* ══════════════════════════════════════════════════════
-   SKILLS
-══════════════════════════════════════════════════════ */
-#skills { background: var(--paper) }
-.skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem }
+/* Spotlight card */
+.card {
+  position: relative; border-radius: var(--radius); padding: 26px;
+  background: var(--surface); border: 1px solid var(--line); overflow: hidden;
+  transition: border-color .3s, transform .3s;
+}
+.card::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(91,140,255,.14), transparent 45%);
+}
+.card:hover { border-color: var(--line-2) }
+.card:hover::before { opacity: 1 }
+.card > * { position: relative }
+.k { font: 500 11px var(--ff-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted) }
+.date { font: 400 12px var(--ff-mono); color: var(--warn) }
 
-.skill-block {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.8rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .3s, border-color .3s;
+/* ── Credentials bento ──────────────────────────────── */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px }
+.c-hero { grid-column: span 4; grid-row: span 2; padding: 34px; display: flex; flex-direction: column;
+  background: radial-gradient(90% 90% at 100% 0%, rgba(91,140,255,.22), transparent 60%), var(--surface);
+  border-color: rgba(91,140,255,.35) }
+.c-side { grid-column: span 2 }
+.badge-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 26px }
+.seal {
+  width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; flex-shrink: 0;
+  background: linear-gradient(140deg, var(--accent), var(--accent-2)); color: #04101f;
+  box-shadow: 0 12px 40px -10px var(--glow);
 }
-.skill-block:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid) }
+.seal svg { width: 28px; height: 28px }
+.seal.sm { width: 42px; height: 42px; border-radius: 12px }
+.seal.sm svg { width: 20px; height: 20px }
+.seal.ghost { background: rgba(255,255,255,.06); color: var(--text-2); box-shadow: none; border: 1px solid var(--line-2) }
+.c-hero h3 { font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.08; letter-spacing: -.03em; font-weight: 600 }
+.c-hero p { margin-top: 14px; color: var(--text-2); max-width: 520px }
+.includes { margin-top: auto; padding-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.inc { padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line-2); background: rgba(7,11,20,.5) }
+.inc b { display: block; font-weight: 500; font-size: 14.5px }
+.inc span { font: 400 12px var(--ff-mono); color: var(--muted) }
+.c-side h3 { font-size: 1.2rem; letter-spacing: -.02em; font-weight: 600; line-height: 1.25; margin: 18px 0 8px }
+.c-side p { font-size: 14px; color: var(--muted) }
+.c-side .date { display: block; margin-top: 16px }
 
-.sb-title {
-  font-family: var(--ff-head); font-size: .78rem; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
-  display: flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem;
-  padding-bottom: .9rem; border-bottom: 2px solid var(--border2);
-}
-.sb-title span { font-size: 1.1rem }
-.sb-title .sb-color {
-  margin-left: auto; width: 10px; height: 10px; border-radius: 50%;
-}
+.cred-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px }
+.cred-list { list-style: none; margin-top: 16px; display: flex; flex-direction: column }
+.cred-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 14.5px }
+.cred-list li:first-child { border-top: 0 }
+.cred-list li span:first-child { color: var(--text-2) }
+.cred-list li span:first-child small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px }
+.cred-list li .date { white-space: nowrap }
 
-.bar-row { margin-bottom: 1rem }
-.bar-head { display:flex; justify-content:space-between; margin-bottom: .4rem }
-.bar-name { font-size: .88rem; color: var(--ink3); font-weight: 500 }
-.bar-pct { font-family: var(--ff-code); font-size: .72rem; color: var(--blue-2); font-weight: 600 }
-.bar-track { height: 6px; background: var(--border2); border-radius: 100px; overflow: hidden }
-.bar-fill {
-  height: 100%; width: 0; border-radius: 100px;
-  transition: width 1.4s cubic-bezier(.4,0,.2,1);
-}
-.c-blue   { background: linear-gradient(90deg, var(--blue-1), var(--blue-3)) }
-.c-teal   { background: linear-gradient(90deg, #0077A8, var(--teal)) }
-.c-amber  { background: linear-gradient(90deg, #B45309, var(--amber)) }
-.c-green  { background: linear-gradient(90deg, #047857, var(--green)) }
+.edu-strip { margin-top: 16px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px }
+.edu-strip .card { padding: 22px 24px }
+.edu-strip h4 { font-weight: 500; font-size: 15.5px; margin-top: 10px; line-height: 1.4 }
+.edu-strip p { font-size: 13.5px; color: var(--muted); margin-top: 4px }
 
-/* tag cloud */
-.tag-cloud { display:flex; flex-wrap:wrap; gap:.4rem }
-.tag {
-  font-family: var(--ff-code); font-size: .62rem;
-  padding: .28rem .65rem; border-radius: 4px;
-  border: 1px solid var(--border);
-  color: var(--muted); font-weight: 500;
-  transition: all .2s; cursor: default; text-transform: uppercase; letter-spacing: .04em;
+/* ── Operations ─────────────────────────────────────── */
+.ops-top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; margin-bottom: 16px }
+.op-feature { padding: 34px; background: radial-gradient(90% 100% at 0% 0%, rgba(62,226,160,.12), transparent 60%), var(--surface); border-color: rgba(62,226,160,.28) }
+.op-feature h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.03em; font-weight: 600; line-height: 1.1; margin: 14px 0 6px }
+.op-feature .where { color: var(--text-2) }
+.op-feature ul { list-style: none; margin-top: 22px; display: grid; gap: 10px }
+.op-feature li { display: flex; gap: 12px; font-size: 14.5px; color: var(--text-2) }
+.op-feature li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; margin-top: .6em; border-radius: 50%; background: var(--live) }
+.live-tag { display: inline-flex; align-items: center; gap: 8px; font: 500 11px var(--ff-mono); color: var(--live); letter-spacing: .1em; text-transform: uppercase }
+.ops-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px }
+.ops-stats .card { display: flex; flex-direction: column; justify-content: space-between; min-height: 150px }
+.ops-stats .n { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.04em; line-height: 1 }
+.ops-stats p { font-size: 13.5px; color: var(--muted); margin-top: 10px }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 18px }
+.filter {
+  font: 500 13px/1 var(--ff); color: var(--text-2); padding: 10px 14px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: transparent; cursor: pointer; transition: all .2s;
 }
-.tag:hover { border-color: var(--blue-2); color: var(--blue-2); background: var(--blue-lt) }
-.tag.blue { border-color: var(--blue-mid); color: var(--blue-2); background: var(--blue-lt) }
-.tag.teal { border-color: rgba(0,168,150,.3); color: var(--teal); background: rgba(0,168,150,.06) }
-.tag.amber { border-color: rgba(217,119,6,.3); color: var(--amber); background: rgba(217,119,6,.06) }
-.tag.green { border-color: rgba(5,150,105,.3); color: var(--green); background: rgba(5,150,105,.06) }
-.tag.red { border-color: rgba(220,38,38,.25); color: var(--red); background: rgba(220,38,38,.06) }
+.filter:hover { color: var(--text) }
+.filter[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text) }
+.ops-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px }
+.op { padding: 22px; transition: opacity .3s, transform .3s, border-color .3s }
+.op.is-hidden { display: none }
+.op-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px }
+.op h4 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.02em; margin: 10px 0 6px }
+.op p { font-size: 13.5px; color: var(--muted); line-height: 1.5 }
+.op .via { margin-top: 14px; font: 400 12px var(--ff-mono); color: var(--text-2) }
 
-/* ══════════════════════════════════════════════════════
-   AI TOOLS
-══════════════════════════════════════════════════════ */
-#ai-tools {
-  background: linear-gradient(135deg, #F0F4FF 0%, var(--white) 50%, #F0FBF8 100%);
-  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-}
-.ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem }
-.ai-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.6rem 1.3rem;
-  text-align: center; transition: all .3s;
-  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
-}
-.ai-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue-2), var(--teal));
-  transform: scaleX(0); transform-origin: left; transition: transform .3s;
-}
-.ai-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--blue-mid) }
-.ai-card:hover::before { transform: scaleX(1) }
-.ai-icon { font-size: 2.2rem; display: block; margin-bottom: .9rem }
-.ai-name { font-family: var(--ff-head); font-size: .85rem; font-weight: 700; color: var(--ink); display: block; margin-bottom: .4rem }
-.ai-desc { font-size: .78rem; color: var(--muted); line-height: 1.55 }
-.ai-badge {
-  display: inline-block; margin-top: .7rem;
-  font-family: var(--ff-code); font-size: .58rem; font-weight: 500;
-  padding: .18rem .55rem; border-radius: 100px;
-  background: var(--blue-lt); color: var(--blue-1); border: 1px solid var(--blue-mid);
-  letter-spacing: .08em; text-transform: uppercase;
-}
+/* ── PI System expertise ────────────────────────────── */
+.stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px }
+.stack .card h3 { font-size: 1.08rem; font-weight: 600; letter-spacing: -.01em; margin: 16px 0 8px }
+.stack .card p { font-size: 14px; color: var(--muted) }
+.stack .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px }
+.ico { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; border: 1px solid var(--line-2); background: rgba(255,255,255,.03); color: var(--accent-2) }
+.ico svg { width: 20px; height: 20px }
+.builds { margin-top: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
+.build { display: flex; flex-direction: column }
+.build .metric { font-size: 2rem; font-weight: 600; letter-spacing: -.04em; line-height: 1; margin-bottom: 14px }
+.build h4 { font-weight: 600; font-size: 1rem; margin-bottom: 6px }
+.build p { font-size: 13.5px; color: var(--muted) }
+.build .stackline { margin-top: auto; padding-top: 16px; font: 400 12px var(--ff-mono); color: var(--text-2) }
+.protocols { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center }
+.protocols .k { margin-right: 6px }
 
-/* ══════════════════════════════════════════════════════
-   EXPERIENCE TIMELINE
-══════════════════════════════════════════════════════ */
-#experience { background: var(--white) }
-.timeline { position: relative; padding-left: 2.2rem }
-.timeline::before {
-  content: ''; position: absolute; left: 6px; top: 12px; bottom: 12px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--blue-2), var(--blue-mid));
-  border-radius: 2px;
-}
+/* ── Project management ─────────────────────────────── */
+.pm { display: grid; grid-template-columns: .9fr 1.1fr; gap: 16px }
+.frameworks { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line) }
+.fw { background: var(--surface); padding: 22px }
+.fw b { display: block; font-weight: 600; font-size: 1.05rem; letter-spacing: -.01em }
+.fw span { font-size: 13px; color: var(--muted) }
+.evidence { display: grid; gap: 12px }
+.ev { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; padding: 22px }
+.ev .n { font-size: 1.6rem; font-weight: 600; letter-spacing: -.03em; min-width: 92px; line-height: 1.1 }
+.ev .n small { display: block; font: 400 11px var(--ff-mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-top: 4px }
+.ev h4 { font-weight: 600; font-size: 1rem; margin-bottom: 4px }
+.ev p { font-size: 13.5px; color: var(--muted) }
 
-.tl-item {
-  position: relative; margin-bottom: 1.8rem;
-  background: var(--paper); border: 1px solid var(--border);
-  border-radius: 16px; padding: 2rem 2rem 1.6rem;
-  box-shadow: var(--shadow-sm);
-  transition: all .3s;
+/* ── Expandable detail (trajectory + AI) ────────────── */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px }
+.drawer { padding: 0 }
+.drawer > summary {
+  list-style: none; cursor: pointer; padding: 28px; display: flex; align-items: center; gap: 18px;
 }
-.tl-item:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid); transform: translateX(3px) }
+.drawer > summary::-webkit-details-marker { display: none }
+.drawer > summary h3 { font-size: 1.45rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.15 }
+.drawer > summary p { font-size: 14px; color: var(--muted); margin-top: 4px }
+.plus {
+  margin-left: auto; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--line-2); display: grid; place-items: center; transition: transform .3s, background .3s;
+}
+.plus svg { width: 16px; height: 16px }
+.drawer[open] .plus { transform: rotate(45deg); background: rgba(255,255,255,.06) }
+.drawer-body { padding: 0 28px 28px; border-top: 1px solid var(--line) }
 
-.tl-dot {
-  position: absolute; left: -2.6rem; top: 1.8rem;
-  width: 16px; height: 16px; border-radius: 50%;
-  background: var(--white); border: 3px solid var(--blue-2);
-  box-shadow: 0 0 0 4px var(--blue-lt);
-}
-.tl-dot.live {
-  background: var(--blue-2);
-  animation: livePulse 2.5s infinite;
-}
-@keyframes livePulse { 0%,100%{box-shadow:0 0 0 4px rgba(0,98,255,.2)} 50%{box-shadow:0 0 0 8px rgba(0,98,255,.08)} }
+.job { border-bottom: 1px solid var(--line) }
+.job:last-child { border-bottom: 0 }
+.job > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 4px 14px; padding: 18px 0 }
+.job > summary::-webkit-details-marker { display: none }
+.job-role { font-weight: 500; font-size: 15px }
+.job-co { grid-column: 1; font-size: 13.5px; color: var(--muted) }
+.job-date { grid-row: 1 / span 2; grid-column: 2; font: 400 12px var(--ff-mono); color: var(--text-2); align-self: center; text-align: right; white-space: nowrap }
+.job-date.now { color: var(--live) }
+.job ul { list-style: none; padding: 0 0 18px; display: grid; gap: 8px }
+.job li { font-size: 14px; color: var(--text-2); padding-left: 16px; position: relative }
+.job li::before { content: ''; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent) }
+.job li strong { color: var(--text); font-weight: 500 }
 
-.tl-top { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:.8rem; margin-bottom: .6rem }
-.tl-role { font-family: var(--ff-head); font-weight: 700; font-size: 1.05rem; color: var(--ink); line-height: 1.3 }
-.tl-date {
-  font-family: var(--ff-code); font-size: .65rem;
-  background: var(--blue-lt); color: var(--blue-1);
-  border: 1px solid var(--blue-mid); border-radius: 100px;
-  padding: .25rem .8rem; white-space: nowrap; font-weight: 500;
-}
-.tl-date.live { background: rgba(5,150,105,.1); color: var(--green); border-color: rgba(5,150,105,.25) }
-.tl-company { font-size: .92rem; color: var(--ink3); font-weight: 500; margin-bottom: .2rem }
-.tl-company strong { color: var(--blue-1) }
-.tl-client { font-family: var(--ff-code); font-size: .68rem; color: var(--amber); margin-bottom: 1rem; font-weight: 500 }
+.ai-item { padding: 18px 0; border-bottom: 1px solid var(--line) }
+.ai-item:last-of-type { border-bottom: 0 }
+.ai-item b { display: block; font-weight: 500; font-size: 15px; margin-bottom: 4px }
+.ai-item p { font-size: 14px; color: var(--muted) }
+.ai-tools { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 18px }
 
-.tl-list { list-style: none; display:flex; flex-direction:column; gap: .45rem }
-.tl-list li {
-  font-size: .9rem; color: var(--ink3); padding-left: 1.3rem;
-  position: relative; line-height: 1.65;
+/* ── Contact ────────────────────────────────────────── */
+.contact { margin-top: 120px; position: relative; overflow: hidden; border-top: 1px solid var(--line); isolation: isolate }
+.contact::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(60% 80% at 50% 100%, rgba(91,140,255,.25), transparent 70%);
 }
-.tl-list li::before {
-  content: ''; position: absolute; left: 0; top: .6em;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--blue-2); opacity: .7;
-}
-.tl-list li strong { color: var(--ink); font-weight: 600 }
+.contact-in { padding: 120px 0 56px; text-align: center }
+.contact h2 { font-size: clamp(2.3rem, 5.5vw, 4.4rem); letter-spacing: -.045em; line-height: 1.02; font-weight: 600 }
+.contact .lead { color: var(--text-2); max-width: 560px; margin: 20px auto 0; font-size: 1.08rem }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 38px }
+.foot { margin-top: 96px; padding-top: 26px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font: 400 12.5px var(--ff-mono); color: var(--muted) }
 
-.tl-chips { display:flex; flex-wrap:wrap; gap: .35rem; margin-top: 1.2rem }
-.tl-chip {
-  font-family: var(--ff-code); font-size: .6rem; font-weight: 500;
-  padding: .2rem .6rem; border-radius: 4px;
-  background: var(--paper); border: 1px solid var(--border);
-  color: var(--muted); transition: all .2s; text-transform: uppercase; letter-spacing: .06em;
-}
-.tl-chip:hover { background: var(--blue-lt); border-color: var(--blue-2); color: var(--blue-2) }
+/* ── Reveal ─────────────────────────────────────────── */
+.rv { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1) }
+.rv.on { opacity: 1; transform: none }
+.no-js .rv { opacity: 1; transform: none }
 
-/* ══════════════════════════════════════════════════════
-   CERTIFICATIONS
-══════════════════════════════════════════════════════ */
-#certifications { background: var(--paper) }
-.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem }
-.cert-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.4rem;
-  box-shadow: var(--shadow-sm);
-  display: flex; flex-direction: column;
-  transition: all .3s; position: relative; overflow: hidden;
-}
-.cert-card::before {
-  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
-  background: linear-gradient(to bottom, var(--blue-2), var(--teal));
-  border-radius: 3px 0 0 3px;
-  transform: scaleY(0); transform-origin: top; transition: transform .3s;
-}
-.cert-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid); transform: translateY(-3px) }
-.cert-card:hover::before { transform: scaleY(1) }
-.cert-cat { font-family: var(--ff-code); font-size: .58rem; color: var(--blue-2); letter-spacing: .16em; text-transform: uppercase; margin-bottom: .5rem; font-weight: 500 }
-.cert-name { font-size: .88rem; font-weight: 600; color: var(--ink2); line-height: 1.4; flex: 1; margin-bottom: .8rem }
-.cert-footer { display:flex; justify-content:space-between; align-items:center; padding-top: .7rem; border-top: 1px solid var(--border2) }
-.cert-issuer { font-size: .7rem; color: var(--muted) }
-.cert-date { font-family: var(--ff-code); font-size: .65rem; color: var(--amber); font-weight: 500 }
-
-/* ══════════════════════════════════════════════════════
-   CLIENTS
-══════════════════════════════════════════════════════ */
-#clients { background: var(--white) }
-.clients-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem }
-.client-card {
-  background: var(--paper); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.3rem;
-  transition: all .3s; position: relative; overflow: hidden;
-}
-.client-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--blue-2), var(--teal));
-  transform: scaleX(0); transform-origin: left; transition: transform .3s;
-}
-.client-card:hover { border-color: var(--blue-mid); box-shadow: var(--shadow-md); transform: translateY(-3px) }
-.client-card:hover::after { transform: scaleX(1) }
-.client-sector { font-family: var(--ff-code); font-size: .58rem; color: var(--blue-2); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .4rem; font-weight: 500 }
-.client-name { font-family: var(--ff-head); font-size: .88rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem }
-.client-detail { font-size: .78rem; color: var(--muted); line-height: 1.5 }
-
-/* ══════════════════════════════════════════════════════
-   EDUCATION
-══════════════════════════════════════════════════════ */
-#education { background: var(--paper) }
-.edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.2rem }
-.edu-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.8rem;
-  box-shadow: var(--shadow-sm); transition: all .3s;
-}
-.edu-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid); transform: translateY(-4px) }
-.edu-icon {
-  width: 46px; height: 46px; border-radius: 12px;
-  background: linear-gradient(135deg, var(--blue-1), var(--blue-3));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; margin-bottom: 1.1rem;
-  box-shadow: 0 6px 20px rgba(0,70,184,.25);
-}
-.edu-degree { font-family: var(--ff-head); font-size: .88rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; line-height: 1.3 }
-.edu-school { font-size: .83rem; color: var(--muted); margin-bottom: .4rem }
-.edu-year { font-family: var(--ff-code); font-size: .65rem; color: var(--amber); font-weight: 500 }
-.edu-detail { font-size: .75rem; color: var(--faint); margin-top: .5rem; line-height: 1.5 }
-
-/* ══════════════════════════════════════════════════════
-   PROJECTS
-══════════════════════════════════════════════════════ */
-#projects { background: var(--white) }
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem }
-.proj-card {
-  background: var(--paper); border: 1px solid var(--border);
-  border-radius: 16px; padding: 1.8rem;
-  box-shadow: var(--shadow-sm); transition: all .3s;
-}
-.proj-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid); transform: translateY(-5px) }
-.proj-name { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem }
-.proj-desc { font-size: .88rem; color: var(--ink3); line-height: 1.65; margin-bottom: 1rem }
-.proj-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom: .8rem }
-.proj-period { font-family: var(--ff-code); font-size: .65rem; color: var(--muted); font-weight: 500 }
-
-/* ══════════════════════════════════════════════════════
-   RECOGNITION
-══════════════════════════════════════════════════════ */
-#recognition { background: var(--paper) }
-.rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem }
-.rec-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 12px; padding: 1.5rem;
-  display: flex; gap: 1rem; align-items: flex-start;
-  box-shadow: var(--shadow-sm); transition: all .3s;
-}
-.rec-card:hover { border-color: var(--amber); box-shadow: var(--shadow-md); transform: translateY(-3px) }
-.rec-ico { font-size: 1.6rem; flex-shrink: 0; line-height: 1 }
-.rec-body strong { display:block; font-family: var(--ff-head); font-size: .82rem; font-weight: 700; color: var(--ink); margin-bottom: .25rem }
-.rec-body p { font-size: .8rem; color: var(--muted); line-height: 1.55 }
-
-/* ══════════════════════════════════════════════════════
-   CONTACT
-══════════════════════════════════════════════════════ */
-#contact {
-  background: linear-gradient(160deg, var(--blue-1) 0%, #003A9C 60%, #002A75 100%);
-  padding: 7rem 2.5rem 5rem; text-align: center; position: relative; overflow: hidden;
-}
-#contact::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.contact-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto }
-.contact-title { font-family: var(--ff-head); font-weight: 700; font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; margin-bottom: .6rem }
-.contact-sub { color: rgba(255,255,255,.65); font-size: 1rem; margin-bottom: 3rem; line-height: 1.7 }
-.contact-links { display:flex; flex-wrap:wrap; justify-content:center; gap:.9rem }
-.c-link {
-  display: flex; align-items: center; gap: .6rem;
-  border: 1.5px solid rgba(255,255,255,.25);
-  padding: .8rem 1.6rem; border-radius: 10px;
-  background: rgba(255,255,255,.08); color: #fff;
-  font-family: var(--ff-body); font-weight: 600; font-size: .85rem;
-  transition: all .25s;
-}
-.c-link:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.5); transform: translateY(-2px) }
-.c-link svg { width:16px; height:16px; opacity:.85 }
-.footer-copy {
-  margin-top: 4rem; font-family: var(--ff-code); font-size: .6rem;
-  color: rgba(255,255,255,.3); letter-spacing: .15em; text-transform: uppercase;
-}
-
-/* ══════════════════════════════════════════════════════
-   KEYFRAMES GLOBALES
-══════════════════════════════════════════════════════ */
-@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-
-/* ══════════════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════════════ */
-@media (max-width: 860px) {
-  .hero-inner { grid-template-columns: 1fr }
-  .hero-right { display: none }
-  .about-grid, .skills-layout { grid-template-columns: 1fr }
-  nav { padding: .7rem 1.5rem }
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 1020px) {
   .nav-links { display: none }
-  .sec { padding: 4rem 1.5rem }
-  .sec-inner { padding: 4rem 1.5rem }
+  .nav .btn { margin-left: auto }
+  .arch { grid-template-columns: 1fr; gap: 40px }
+  .arch-col.src::after, .arch-col.out::before {
+    width: 2px; height: 40px; left: 50%; right: auto; top: auto; transform: translateX(-50%);
+    background: repeating-linear-gradient(180deg, var(--accent-2) 0 7px, transparent 7px 14px);
+    background-size: 2px 28px; animation-name: flowv;
+  }
+  .arch-col.src::after { bottom: -40px }
+  .arch-col.out::before { top: -40px }
+  .arch-col.src, .arch-col.out { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+  .arch-col h4 { grid-column: span 2 }
+  .flow { grid-auto-flow: row; gap: 20px }
+  .step:not(:last-child)::after {
+    top: auto; bottom: -20px; right: auto; left: 28px; width: 2px; height: 20px;
+    background: repeating-linear-gradient(180deg, var(--accent-2) 0 5px, transparent 5px 10px);
+    background-size: 2px 20px; animation-name: flowv;
+  }
+  .tiles { grid-template-columns: 1fr 1fr }
+  .sec-head { grid-template-columns: 1fr; gap: 16px }
+  .bento { grid-template-columns: 1fr 1fr }
+  .c-hero { grid-column: span 2; grid-row: auto }
+  .c-side { grid-column: span 1 }
+  .cred-groups, .edu-strip { grid-template-columns: 1fr }
+  .ops-top, .pm, .duo { grid-template-columns: 1fr }
+  .stack { grid-template-columns: 1fr 1fr }
+  .builds { grid-template-columns: 1fr 1fr }
+}
+@keyframes flowv { to { background-position: 0 28px } }
+@media (max-width: 620px) {
+  .wrap { padding: 0 16px }
+  .hero { padding-top: 120px }
+  .panel { padding: 24px 16px }
+  .console-status { display: none }
+  .tabs { width: 100%; overflow-x: auto }
+  .tab { white-space: nowrap }
+  .bento, .stack, .builds, .includes, .ops-stats { grid-template-columns: 1fr }
+  .c-hero, .c-side { grid-column: auto }
+  .c-hero, .op-feature { padding: 24px }
+  .frameworks { grid-template-columns: 1fr }
+  .ev { grid-template-columns: 1fr; gap: 8px }
+  .drawer > summary { padding: 22px }
+  .drawer-body { padding: 0 22px 22px }
+  section.sec { padding-top: 88px }
+  .nav .btn span { display: none }
+  .node small { display: none }
+  .core { padding: 16px }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important }
+  .rv { opacity: 1; transform: none }
 }
 </style>
 </head>
-<body>
+<body class="no-js">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">
-    <div class="nav-brand-dot"></div>
-    Henry Gallardo Yntor
+<!-- ── Navegación ──────────────────────────────────── -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="Inicio"><span class="mark">HG</span>Henry Gallardo</a>
+    <ul class="nav-links">
+      <li><a href="#credenciales">Credenciales</a></li>
+      <li><a href="#operaciones">Operaciones</a></li>
+      <li><a href="#pi-system">PI System</a></li>
+      <li><a href="#gestion">Gestión</a></li>
+      <li><a href="#detalle">Trayectoria</a></li>
+    </ul>
+    <a href="#contacto" class="btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+      <span>Contactar</span>
+    </a>
   </div>
-  <div class="nav-tag">Disponible · CIP 380044</div>
-  <ul class="nav-links">
-    <li><a href="#about">Perfil</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#ai-tools">AI Tools</a></li>
-    <li><a href="#experience">Experiencia</a></li>
-    <li><a href="#certifications">Certs</a></li>
-    <li><a href="#clients">Clientes</a></li>
-    <li><a href="#education">Formación</a></li>
-    <li><a href="#contact">Contacto</a></li>
-  </ul>
-</nav>
+</header>
 
-<!-- ═══════ HERO ═══════ -->
-<section id="hero">
-  <div class="hero-inner">
-    <!-- LEFT -->
-    <div class="hero-left">
-      <div class="hero-eyebrow">Especialista AVEVA PI System · Project Lead</div>
+<main id="top">
 
-      <h1 class="hero-name">
-        Henry<br>
-        <em>Gallardo</em><br>
-        Yntor
-      </h1>
+<!-- ── Hero ────────────────────────────────────────── -->
+<section class="hero">
+  <div class="wrap">
+    <span class="pill rv"><b>AVEVA</b>PI Systems Professional · Certificado 2026</span>
 
-      <p class="hero-subtitle">
-        <strong>Líder técnico TI/OT</strong> con más de 10 años conectando sistemas industriales,
-        administrando plataformas críticas y liderando proyectos de transformación digital
-        en el sector minero y energético de Sudamérica.
-      </p>
+    <h1 class="rv">Datos de planta confiables.<br><span class="dim">Decisiones a tiempo.</span></h1>
 
-      <div class="hero-chips">
-        <span class="hero-chip">AVEVA PI System</span>
-        <span class="hero-chip">Project Lead</span>
-        <span class="hero-chip">ITIL v4</span>
-        <span class="hero-chip">Industria 4.0</span>
-        <span class="hero-chip">PMBOK 7</span>
-        <span class="hero-chip">COBIT 2019</span>
-      </div>
+    <p class="hero-lead rv">
+      Soy <strong>Henry Gallardo Yntor</strong>, Ingeniero de Sistemas y <strong>Especialista Senior en AVEVA PI System</strong>.
+      Desde hace más de 8 años administro, integro y hago evolucionar plataformas PI en operaciones mineras y energéticas 24/7
+      de Perú, Chile y Brasil: desde el sensor hasta el tablero gerencial, con gestión de proyectos y gobierno TI.
+    </p>
 
-      <div class="hero-contact">
-        <div class="hci">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Cajamarca, Perú · DNI 71346613 · CIP 380044
+    <div class="hero-cta rv">
+      <a href="#credenciales" class="btn btn-primary">Ver credenciales
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#operaciones" class="btn">Operaciones atendidas</a>
+    </div>
+
+    <div class="hero-meta rv">
+      <span><i class="dot-live"></i>CONTAC Ingenieros · Ingeniero Nivel IV</span>
+      <span>CIP N° 380044</span>
+      <span>Cajamarca, Perú · Remoto</span>
+    </div>
+
+    <!-- Consola con pestañas -->
+    <div class="console rv" id="console">
+      <div class="console-in">
+        <div class="console-bar">
+          <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="tabs" role="tablist" aria-label="Áreas de dominio">
+            <button class="tab" role="tab" id="t-arch" aria-controls="p-arch" aria-selected="true">Arquitectura PI</button>
+            <button class="tab" role="tab" id="t-pm" aria-controls="p-pm" aria-selected="false" tabindex="-1">Gestión de entregas</button>
+            <button class="tab" role="tab" id="t-ai" aria-controls="p-ai" aria-selected="false" tabindex="-1">IA aplicada</button>
+          </div>
+          <div class="console-status"><i class="dot-live"></i>SLA &gt; 99,5 % · operación 24/7</div>
         </div>
-        <div class="hci">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:hagy_se@outlook.es">hagy_se@outlook.es</a>
-        </div>
-        <div class="hci">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          <a href="https://linkedin.com/in/henry-gallardo-yntor" target="_blank">linkedin.com/in/henry-gallardo-yntor</a>
-        </div>
-        <div class="hci">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>
-          +51 997 658 881
-        </div>
-      </div>
 
-      <div class="hero-ctas">
-        <a href="#experience" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          Ver Experiencia
-        </a>
-        <a href="#skills" class="btn btn-outline">Stack Técnico</a>
-        <a href="#contact" class="btn btn-teal">Contactar</a>
+        <!-- Pestaña 1: arquitectura -->
+        <div class="panel" role="tabpanel" id="p-arch" aria-labelledby="t-arch">
+          <div class="panel-cap">// del proceso a la decisión: el stack que administro de punta a punta</div>
+          <div class="arch">
+            <div class="arch-col src">
+              <h4>Fuentes OT</h4>
+              <div class="node">DCS · PLC · SCADA <small>Rockwell · Siemens · ABB</small></div>
+              <div class="node">OPC DA / UA <small>failover</small></div>
+              <div class="node">RDBMS · UFL <small>SQL</small></div>
+              <div class="node">APIs · MQTT <small>Node-RED</small></div>
+            </div>
+            <div class="core">
+              <div class="core-title">AVEVA PI System <span><i class="dot-live"></i>en línea</span></div>
+              <div class="core-grid">
+                <div>PI Data Archive</div>
+                <div>Asset Framework</div>
+                <div>Analytics</div>
+                <div>Event Frames</div>
+                <div>Notifications</div>
+                <div>Connector Relay · DCM</div>
+                <div class="full">~50 000 tags · 141 PointSources gobernados</div>
+              </div>
+            </div>
+            <div class="arch-col out">
+              <h4>Consumo</h4>
+              <div class="node">PI Vision <small>18 símbolos JS</small></div>
+              <div class="node">PI Web API · AF SDK <small>REST</small></div>
+              <div class="node">Power BI · DataLink <small>reportes</small></div>
+              <div class="node">CONNECT · Predictive <small>nube · IA</small></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pestaña 2: gestión -->
+        <div class="panel" role="tabpanel" id="p-pm" aria-labelledby="t-pm" hidden>
+          <div class="panel-cap">// cómo llevo un cambio a producción sin detener la operación</div>
+          <div class="flow">
+            <div class="step"><b>RFC</b><p>Solicitud de cambio con aprobación conjunta CONTAC–cliente.</p></div>
+            <div class="step"><b>DEV</b><p>Desarrollo por sprints, con historias de usuario y LLD.</p></div>
+            <div class="step"><b>QA</b><p>Validación con checklist de 22 hojas (COBIT, ITIL, ISO 27001).</p></div>
+            <div class="step hl"><b>PROD</b><p>Despliegue controlado y plan de reversa.</p></div>
+            <div class="step"><b>Operación</b><p>Incidentes ITIL, RCA/5-Why y SLA medido.</p></div>
+          </div>
+          <div class="flow-foot">
+            <span class="chip acc">PMBOK 7</span><span class="chip acc">Scrum</span><span class="chip acc">ITIL 4</span>
+            <span class="chip">COBIT 2019</span><span class="chip">ISO 27001</span><span class="chip">NIST CSF</span>
+          </div>
+        </div>
+
+        <!-- Pestaña 3: IA -->
+        <div class="panel" role="tabpanel" id="p-ai" aria-labelledby="t-ai" hidden>
+          <div class="panel-cap">// prueba de concepto: de un boceto a una pantalla PI Vision funcional</div>
+          <div class="flow">
+            <div class="step"><b>Mockup PNG</b><p>Boceto de la pantalla que pide la operación.</p></div>
+            <div class="step hl"><b>LLM con visión</b><p>Interpreta el diseño con un prompt maestro alineado a ISA-101.</p></div>
+            <div class="step"><b>Python</b><p>Genera el JSON nativo de PI Vision.</p></div>
+            <div class="step"><b>Display PI Vision</b><p>Pantalla funcional, conectada a AF y lista para revisión.</p></div>
+          </div>
+          <div class="flow-foot">
+            <span class="chip acc">AVEVA Predictive Analytics</span><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Copilot</span><span class="chip">N8N</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- RIGHT — stats card -->
-    <div class="hero-right">
-      <div class="hero-card">
-        <div class="hc-title">// system status — indicadores clave</div>
-        <div class="stats-grid">
-          <div class="stat-box"><span class="stat-num" data-count="10" data-sfx="+">0</span><span class="stat-lbl">Años exp.</span></div>
-          <div class="stat-box"><span class="stat-num" data-count="28" data-sfx="+">0</span><span class="stat-lbl">Certificaciones</span></div>
-          <div class="stat-box"><span class="stat-num" data-count="8" data-sfx="+">0</span><span class="stat-lbl">Mineras</span></div>
-          <div class="stat-box"><span class="stat-num" data-count="50" data-sfx="K">0</span><span class="stat-lbl">Tags PI</span></div>
-          <div class="stat-box"><span class="stat-num" data-count="99" data-sfx=".5%">0</span><span class="stat-lbl">SLA</span></div>
-          <div class="stat-box"><span class="stat-num" data-count="9" data-sfx="">0</span><span class="stat-lbl">Años SOGOTI</span></div>
-        </div>
-        <div class="availability-badge">
-          <div class="av-dot"></div>
-          <div class="av-text"><strong>Disponible</strong> para nuevos proyectos · Régimen 14×7 · Relocation OK</div>
-        </div>
-      </div>
+    <div class="tiles rv">
+      <div class="tile"><div class="tile-n"><span data-count="8">8</span>+ años</div><div class="tile-l">especializado en AVEVA PI System</div></div>
+      <div class="tile"><div class="tile-n">&gt;99,5 %</div><div class="tile-l">disponibilidad de la plataforma PI, medida por SLA</div></div>
+      <div class="tile"><div class="tile-n"><span data-count="12">12</span>+</div><div class="tile-l">operaciones industriales en 3 países</div></div>
+      <div class="tile"><div class="tile-n">−<span data-count="70">70</span> %</div><div class="tile-l">de tiempo en el reporte mensual, tras automatizarlo</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ ABOUT ═══════ -->
-<section class="sec" id="about">
-  <div class="sec-eyebrow">01 — Perfil Profesional</div>
-  <h2 class="sec-title">Líder Técnico <span class="acc">TI/OT</span><br>con Visión de Negocio</h2>
-
-  <div class="about-grid">
-    <div class="about-text rv">
-      <p>Soy <strong>líder técnico, gestor de servicios y administrador de plataformas TI/OT</strong> con más de 10 años en los sectores <span class="hl">minero, energético y telecomunicaciones</span> en Perú, Chile y Brasil.</p>
-      <p>Fundé y dirigí <strong>Soluciones Globales con TI EIRL (SOGOTI)</strong>, empresa de integración tecnológica con 9 años de operación — proyectos PI System, soporte multinivel N1/N2/N3, desarrollo de software e implementación de tecnologías <span class="hl">Industria 4.0</span>.</p>
-      <p>Conduzco proyectos de principio a fin, coordino equipos multidisciplinarios y garantizo continuidad operativa 24/7 bajo marcos internacionales: <span class="hl">ITIL v4, PMBOK 7, COBIT 2019 y Scrum</span>.</p>
-      <p>Actualmente lidero el Proyecto <strong>S23004 para Compañía Minera del Pacífico (CMP) — Chile</strong>, manteniendo disponibilidad de plataforma PI sostenida sobre el <span class="hl">99.5 %</span> (SLA contractual).</p>
-    </div>
-
-    <div class="metrics-panel rv d2">
-      <div class="m-card"><div class="m-icon">🏭</div><div class="m-num">10+</div><div class="m-lbl">Años experiencia</div><div class="m-desc">Integración industrial OT/IT y liderazgo de proyectos tecnológicos</div></div>
-      <div class="m-card"><div class="m-icon">🏆</div><div class="m-num">28+</div><div class="m-lbl">Certificaciones</div><div class="m-desc">AVEVA, ITIL, CCNA, MCSA, Scrum, PMP y Ciberseguridad</div></div>
-      <div class="m-card wide"><div class="m-icon">🌎</div><div class="m-num">3 países · 12+ operaciones</div><div class="m-lbl">Perú · Chile · Brasil</div><div class="m-desc">CMP, Goldfields, Antamina, Las Bambas, Barrick Pierina, Buenaventura, Yanacocha, Nexa Resources, H.E. Cerro del Águila, Telefónica, Claro, MINEDU.</div></div>
-    </div>
-  </div>
-</section>
-
-<hr class="sec-divider">
-
-<!-- ═══════ SKILLS ═══════ -->
-<section class="sec" id="skills">
-  <div class="sec-eyebrow">02 — Competencias Técnicas</div>
-  <h2 class="sec-title">Stack <span class="acc">Tecnológico</span></h2>
-  <p class="sec-sub">Dominio integral del ecosistema industrial: desde el sensor hasta la nube, pasando por el historiador, la integración y la gobernanza de servicios.</p>
-
-  <div class="skills-layout">
-
-    <div class="skill-block rv">
-      <div class="sb-title"><span>⚙️</span>PI System / AVEVA<div class="sb-color" style="background:var(--blue-2)"></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">PI Data Archive & Asset Framework</span><span class="bar-pct">98%</span></div><div class="bar-track"><div class="bar-fill c-blue" data-w="98"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">PI Vision 2022 + Extensibility (JS)</span><span class="bar-pct">95%</span></div><div class="bar-track"><div class="bar-fill c-blue" data-w="95"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">PI Web API + AF SDK</span><span class="bar-pct">93%</span></div><div class="bar-track"><div class="bar-fill c-blue" data-w="93"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">PI Analytics + Event Frames</span><span class="bar-pct">93%</span></div><div class="bar-track"><div class="bar-fill c-blue" data-w="93"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Interfaces OPC-DA/UA, Modbus, RDBMS</span><span class="bar-pct">90%</span></div><div class="bar-track"><div class="bar-fill c-blue" data-w="90"></div></div></div>
-    </div>
-
-    <div class="skill-block rv d1">
-      <div class="sb-title"><span>🖥️</span>Infraestructura & Cloud<div class="sb-color" style="background:var(--amber)"></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Windows Server (AD/IIS/GPO/TLS)</span><span class="bar-pct">91%</span></div><div class="bar-track"><div class="bar-fill c-amber" data-w="91"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">VMware ESXi / Hyper-V / Azure</span><span class="bar-pct">83%</span></div><div class="bar-track"><div class="bar-fill c-amber" data-w="83"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Linux (Ubuntu / CentOS)</span><span class="bar-pct">78%</span></div><div class="bar-track"><div class="bar-fill c-amber" data-w="78"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">SQL Server / PI SQL DAS</span><span class="bar-pct">85%</span></div><div class="bar-track"><div class="bar-fill c-amber" data-w="85"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Ciberseguridad OT (ISO 27001 / NIST)</span><span class="bar-pct">80%</span></div><div class="bar-track"><div class="bar-fill c-amber" data-w="80"></div></div></div>
-    </div>
-
-    <div class="skill-block rv d2">
-      <div class="sb-title"><span>🤖</span>Automatización & Desarrollo<div class="sb-color" style="background:var(--teal)"></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Python (PI API, pandas, reportes)</span><span class="bar-pct">87%</span></div><div class="bar-track"><div class="bar-fill c-teal" data-w="87"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Node-RED / N8N (ETL Industrial)</span><span class="bar-pct">90%</span></div><div class="bar-track"><div class="bar-fill c-teal" data-w="90"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">PowerShell / .NET 8 (C#)</span><span class="bar-pct">84%</span></div><div class="bar-track"><div class="bar-fill c-teal" data-w="84"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Node.js / JavaScript</span><span class="bar-pct">80%</span></div><div class="bar-track"><div class="bar-fill c-teal" data-w="80"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">HTML · CSS · Firebase · Netlify</span><span class="bar-pct">75%</span></div><div class="bar-track"><div class="bar-fill c-teal" data-w="75"></div></div></div>
-    </div>
-
-    <div class="skill-block rv d3">
-      <div class="sb-title"><span>📋</span>Gestión & Gobernanza<div class="sb-color" style="background:var(--green)"></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">ITIL v4 (certificado PeopleCert)</span><span class="bar-pct">91%</span></div><div class="bar-track"><div class="bar-fill c-green" data-w="91"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">PMBOK 7 / Scrum (SMPC + SPOPC)</span><span class="bar-pct">88%</span></div><div class="bar-track"><div class="bar-fill c-green" data-w="88"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">COBIT 2019 / TOGAF</span><span class="bar-pct">80%</span></div><div class="bar-track"><div class="bar-fill c-green" data-w="80"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Liderazgo técnico de equipos</span><span class="bar-pct">93%</span></div><div class="bar-track"><div class="bar-fill c-green" data-w="93"></div></div></div>
-      <div class="bar-row"><div class="bar-head"><span class="bar-name">Documentación técnica ejecutiva</span><span class="bar-pct">95%</span></div><div class="bar-track"><div class="bar-fill c-green" data-w="95"></div></div></div>
-    </div>
-  </div>
-
-  <!-- Tag cloud -->
-  <div class="skill-block rv d2" style="margin-top:1.4rem;padding:1.8rem">
-    <div class="sb-title" style="margin-bottom:1rem"><span>🔬</span>Ecosistema tecnológico completo</div>
-    <div class="tag-cloud">
-      <span class="tag blue">AVEVA PI System</span><span class="tag blue">OPC-DA</span><span class="tag blue">OPC-UA</span>
-      <span class="tag blue">PI Web API</span><span class="tag blue">AF SDK</span><span class="tag blue">PI Vision</span>
-      <span class="tag blue">Node-RED</span><span class="tag amber">Windows Server</span><span class="tag amber">VMware</span>
-      <span class="tag amber">Azure IaaS</span><span class="tag amber">SQL Server</span><span class="tag amber">Active Directory</span>
-      <span class="tag teal">Python</span><span class="tag teal">PowerShell</span><span class="tag teal">.NET 8</span>
-      <span class="tag teal">N8N</span><span class="tag teal">Node.js</span><span class="tag teal">JavaScript</span>
-      <span class="tag green">ITIL v4</span><span class="tag green">PMBOK 7</span><span class="tag green">Scrum</span>
-      <span class="tag green">COBIT 2019</span><span class="tag green">ISO 27001</span><span class="tag green">NIST CSF</span>
-      <span class="tag">Modbus TCP</span><span class="tag">IEC 61850</span><span class="tag">MQTT</span><span class="tag">DNP3</span>
-      <span class="tag">Rockwell RSLinx</span><span class="tag">Siemens PCS7</span><span class="tag">ABB</span><span class="tag">Schneider</span>
-      <span class="tag">DCS/SCADA</span><span class="tag">Power BI</span><span class="tag red">Industria 4.0</span><span class="tag red">IoT Industrial</span>
-      <span class="tag red">IA / ML Aplicado</span>
-    </div>
-  </div>
-</section>
-
-<hr class="sec-divider">
-
-<!-- ═══════ AI TOOLS ═══════ -->
-<div id="ai-tools">
-  <div class="sec-inner">
-    <div class="sec-eyebrow rv">03 — Herramientas de Inteligencia Artificial</div>
-    <h2 class="sec-title rv">Ecosistema <span class="acc">AI</span> Aplicado</h2>
-    <p class="sec-sub rv">Integración de inteligencia artificial en flujos de trabajo industriales — desde la generación automática de documentación y reportes hasta el análisis predictivo y la orquestación de procesos.</p>
-
-    <div class="ai-grid">
-      <div class="ai-card rv"><span class="ai-icon">🧠</span><span class="ai-name">Claude</span><span class="ai-desc">IA conversacional para análisis técnico, generación de documentación (RCA, LLD, informes), scripting y asistencia en gobernanza de proyectos.</span><span class="ai-badge">Anthropic</span></div>
-      <div class="ai-card rv d1"><span class="ai-icon">💬</span><span class="ai-name">ChatGPT</span><span class="ai-desc">Automatización de consultas técnicas, generación de código, análisis de datos industriales y soporte en documentación de proyectos.</span><span class="ai-badge">OpenAI</span></div>
-      <div class="ai-card rv d2"><span class="ai-icon">📓</span><span class="ai-name">NotebookLM</span><span class="ai-desc">Análisis y síntesis de documentación técnica extensa: RCA, manuales PI System, normas ITIL/PMBOK y estándares industriales.</span><span class="ai-badge">Google</span></div>
-      <div class="ai-card rv d3"><span class="ai-icon">🎬</span><span class="ai-name">Sora</span><span class="ai-desc">Generación de contenido visual para presentaciones técnicas ejecutivas y materiales de capacitación industrial de alto impacto.</span><span class="ai-badge">OpenAI</span></div>
-      <div class="ai-card rv"><span class="ai-icon">🗺️</span><span class="ai-name">Napkin AI</span><span class="ai-desc">Generación automática de diagramas técnicos, arquitecturas de sistemas y visualizaciones de flujos a partir de texto estructurado.</span><span class="ai-badge">Napkin</span></div>
-      <div class="ai-card rv d1"><span class="ai-icon">🔗</span><span class="ai-name">N8N</span><span class="ai-desc">Orquestación de flujos de trabajo con IA: automatización de pipelines de datos, integraciones REST/MQTT y reportes regulatorios.</span><span class="ai-badge">N8N · Open Source</span></div>
-      <div class="ai-card rv d2"><span class="ai-icon">🎨</span><span class="ai-name">Midjourney</span><span class="ai-desc">Generación de recursos visuales para presentaciones ejecutivas y materiales de comunicación técnica de alto impacto.</span><span class="ai-badge">Midjourney</span></div>
-      <div class="ai-card rv d3"><span class="ai-icon">⚡</span><span class="ai-name">Copilot / Gemini</span><span class="ai-desc">Asistencia en codificación, revisión de scripts Python/PowerShell/.NET y generación de consultas SQL para PI SQL DAS.</span><span class="ai-badge">Microsoft · Google</span></div>
-      <div class="ai-card rv"><span class="ai-icon">🔮</span><span class="ai-name">IA Predictiva</span><span class="ai-desc">Análisis predictivo sobre datos de PI System: detección de anomalías, modelos de mantenimiento preventivo y optimización de procesos mineros.</span><span class="ai-badge">Custom · ML</span></div>
+<!-- ── Marquesina de operaciones ───────────────────── -->
+<div class="trust" aria-label="Operaciones atendidas">
+  <p>Operaciones que confiaron su plataforma en mi trabajo</p>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>CMP<em>CL</em></span><span>Antamina<em>PE</em></span><span>Las Bambas<em>PE</em></span><span>Gold Fields<em>PE</em></span>
+      <span>Barrick<em>PE</em></span><span>Buenaventura<em>PE</em></span><span>Yanacocha<em>PE</em></span><span>Nexa Resources<em>PE · BR</em></span>
+      <span>Cerro del Águila<em>PE</em></span><span>Telefónica<em>PE</em></span><span>Claro<em>PE</em></span><span>MINEDU<em>PE</em></span>
+      <span aria-hidden="true">CMP<em>CL</em></span><span aria-hidden="true">Antamina<em>PE</em></span><span aria-hidden="true">Las Bambas<em>PE</em></span><span aria-hidden="true">Gold Fields<em>PE</em></span>
+      <span aria-hidden="true">Barrick<em>PE</em></span><span aria-hidden="true">Buenaventura<em>PE</em></span><span aria-hidden="true">Yanacocha<em>PE</em></span><span aria-hidden="true">Nexa Resources<em>PE · BR</em></span>
+      <span aria-hidden="true">Cerro del Águila<em>PE</em></span><span aria-hidden="true">Telefónica<em>PE</em></span><span aria-hidden="true">Claro<em>PE</em></span><span aria-hidden="true">MINEDU<em>PE</em></span>
     </div>
   </div>
 </div>
 
-<hr class="sec-divider">
-
-<!-- ═══════ EXPERIENCE ═══════ -->
-<section class="sec" id="experience">
-  <div class="sec-eyebrow">04 — Experiencia Profesional</div>
-  <h2 class="sec-title">Trayectoria <span class="acc">Profesional</span></h2>
-  <p class="sec-sub">Más de 10 años liderando proyectos de integración industrial y gestión de plataformas en las principales operaciones mineras y energéticas de Sudamérica.</p>
-
-  <div class="timeline">
-
-    <div class="tl-item rv">
-      <div class="tl-dot live"></div>
-      <div class="tl-top">
-        <div class="tl-role">Project Lead — Especialista Senior PI System</div>
-        <div class="tl-date live">Sep. 2021 — Actualidad</div>
+<!-- ── 01 Credenciales ─────────────────────────────── -->
+<section class="sec" id="credenciales">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow">01 · Credenciales &amp; Acreditaciones</div>
+        <h2>Certificado por el fabricante.<br><span class="dim">Validado en operación.</span></h2>
       </div>
-      <div class="tl-company"><strong>CONTAC Ingenieros Ltda.</strong> — División Integración de Sistemas Industriales</div>
-      <div class="tl-client">▸ Cliente: Compañía Minera del Pacífico (CMP) · Proyecto S23004 · Chile / Cajamarca</div>
-      <ul class="tl-list">
-        <li>Liderar el Proyecto S23004 bajo PMBOK 7: planificar sprints, gestionar recursos y entregables garantizando disponibilidad PI sostenida sobre el <strong>99.5 %</strong> (SLA contractual).</li>
-        <li>Administrar la plataforma PI System multi-sitio de CMP: PI Data Archive, PI AF, PI Vision 2022, PI Web API, PI Connector Relay, PI DCM, PI Notifications y PI SQL DAS.</li>
-        <li>Automatizar el pipeline de reporting mensual (Python + Node.js + PI Web API + AF SDK), reduciendo tiempos de elaboración en más del <strong>70 %</strong>.</li>
-        <li>Desarrollar el framework de gobernanza CONTAC-FW-DEPLOY-001 (COBIT 2019, ITIL 4, ISO 27001/27032, NIST CSF).</li>
-        <li>Gestionar incidentes críticos bajo ITIL v4 con RCA/5-Why documentados y matrices de trazabilidad.</li>
-      </ul>
-      <div class="tl-chips"><span class="tl-chip">PI System</span><span class="tl-chip">Node-RED</span><span class="tl-chip">Python</span><span class="tl-chip">.NET 8</span><span class="tl-chip">ITIL v4</span><span class="tl-chip">PMBOK 7</span><span class="tl-chip">COBIT 2019</span><span class="tl-chip">OPC-UA</span></div>
+      <p class="sec-sub rv">Las rutas de certificación de AVEVA cubren el ciclo completo de la plataforma: instalación, infraestructura, nube y analítica predictiva. A ellas sumo gestión de proyectos, gestión de servicios y ciberseguridad.</p>
     </div>
 
-    <div class="tl-item rv">
-      <div class="tl-dot"></div>
-      <div class="tl-top">
-        <div class="tl-role">Gerente General & Jefe de TI — Empresa Propia</div>
-        <div class="tl-date">Sep. 2016 — Dic. 2025</div>
-      </div>
-      <div class="tl-company"><strong>Soluciones Globales con TI EIRL (SOGOTI)</strong> — Cajamarca, Perú</div>
-      <div class="tl-client">▸ RUC: 20601656311 · Integración tecnológica · Alianza con ControlSI SAC</div>
-      <ul class="tl-list">
-        <li>Fundé y dirigí empresa de servicios TI con 9 años de operación: soporte N1/N2/N3, PI System, Industria 4.0 y desarrollo de software a medida.</li>
-        <li>Implementé PI System para Antamina, Goldfields (Cerro Corona) y Las Bambas.</li>
-        <li>Brindé soporte multinivel a Telefónica del Perú y Claro; mantuve sistemas del MINEDU en región Cajamarca.</li>
-        <li>Desarrollé sistemas ERP, plataformas web, aplicaciones académicas, videovigilancia y aplicaciones Firebase/Netlify.</li>
-        <li>Implementé soluciones Industria 4.0: IoT industrial, ETL con Node-RED/N8N, dashboards en tiempo real y análisis predictivo con IA.</li>
-      </ul>
-      <div class="tl-chips"><span class="tl-chip">PI System</span><span class="tl-chip">N1/N2/N3</span><span class="tl-chip">Industria 4.0</span><span class="tl-chip">N8N</span><span class="tl-chip">MINEDU</span><span class="tl-chip">IoT</span></div>
+    <div class="bento">
+      <article class="card c-hero rv">
+        <div class="badge-row">
+          <span class="k">AVEVA Learning · Exam Path</span>
+          <span class="date">Ene. 2026</span>
+        </div>
+        <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8z"/><path d="M8 17.5L7 22l5-2.5 5 2.5-1-4.5"/></svg></div>
+        <h3 style="margin-top:22px">AVEVA PI Systems Professional</h3>
+        <p>La certificación profesional de AVEVA para PI System. Integra las dos especialidades técnicas de la plataforma y 14 módulos: administración, Asset Framework, PI Vision, Event Frames, Notifications y desarrollo.</p>
+        <div class="includes">
+          <div class="inc"><b>PI Infrastructure Specialist</b><span>Examen de certificación · Sep. 2025</span></div>
+          <div class="inc"><b>PI Installation Specialist</b><span>Examen de certificación · Sep. 2025</span></div>
+        </div>
+      </article>
+
+      <article class="card c-side rv">
+        <div class="badge-row" style="margin-bottom:0"><div class="seal sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><span class="date">2026</span></div>
+        <h3>AVEVA Predictive Analytics</h3>
+        <p>Exámenes Admin y Client: modelos, plantillas, diagnóstico de fallas y monitoreo para mantenimiento predictivo.</p>
+      </article>
+
+      <article class="card c-side rv">
+        <div class="badge-row" style="margin-bottom:0"><div class="seal sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 100-9h-1.8A7 7 0 104 15.3"/><path d="M12 13v8M9 18l3 3 3-3"/></svg></div><span class="date">Ene. 2026</span></div>
+        <h3>AVEVA CONNECT Data Services</h3>
+        <p>Foundations Certification: PI to CONNECT, AVEVA Adapters y egreso por REST API.</p>
+      </article>
     </div>
 
-    <div class="tl-item rv">
-      <div class="tl-dot"></div>
-      <div class="tl-top">
-        <div class="tl-role">Administrador de Infraestructura TI / OT</div>
-        <div class="tl-date">Ene. 2020 — Dic. 2020</div>
-      </div>
-      <div class="tl-company"><strong>Grupo Electrodata S.A.C.</strong></div>
-      <div class="tl-client">▸ Cliente: Minera Goldfields Perú (Cerro Corona)</div>
-      <ul class="tl-list">
-        <li>Administré la infraestructura TI/OT del site (Windows/Linux, VMware, AD, PI System, Dispatch, Datamine) y seguridad perimetral.</li>
-        <li>Participé en el análisis y recuperación de plataformas afectadas por ataque <strong>Ransomware</strong>; restauré servicios críticos.</li>
-        <li>Implementé controles SOX y documenté infraestructura para ISO 27001.</li>
-      </ul>
-      <div class="tl-chips"><span class="tl-chip">Windows Server</span><span class="tl-chip">VMware</span><span class="tl-chip">PI System</span><span class="tl-chip">ISO 27001</span><span class="tl-chip">SOX</span></div>
+    <div class="cred-groups">
+      <article class="card rv">
+        <span class="k">Dirección de proyectos</span>
+        <ul class="cred-list">
+          <li><span>Especialización en Dirección de Proyectos, enfoque PMI<small>Netcram / CIP · 120 h · nota 20/20</small></span><span class="date">Abr. 2026</span></li>
+          <li><span>Curso Oficial de Preparación PMP®<small>BSG Institute</small></span><span class="date">Oct. 2022</span></li>
+          <li><span>Scrum Master (SMPC®) y Product Owner (SPOPC)<small>CertiProf</small></span><span class="date">Ago. 2020</span></li>
+        </ul>
+      </article>
+      <article class="card rv">
+        <span class="k">Servicio, seguridad e infraestructura</span>
+        <ul class="cred-list">
+          <li><span>Lead Cybersecurity Professional (LCSPC™)<small>CertiProf</small></span><span class="date">Ene. 2023</span></li>
+          <li><span>ITIL® 4 Foundation<small>AXELOS / PeopleCert</small></span><span class="date">Mar. 2021</span></li>
+          <li><span>MCSA: Windows Server 2016<small>Microsoft</small></span><span class="date">Abr. 2017</span></li>
+          <li><span>CCNA Routing &amp; Switching<small>Cisco</small></span><span class="date">Mar. 2015</span></li>
+        </ul>
+      </article>
+      <article class="card rv">
+        <span class="k">Trayectoria PI y reconocimientos</span>
+        <ul class="cred-list">
+          <li><span>Instructor de PI System: herramientas de visualización<small>Barrick Pierina</small></span><span class="date">Mar. 2019</span></li>
+          <li><span>PI System Infrastructure Specialist Accreditation<small>OSIsoft Partner Ecosphere</small></span><span class="date">Feb. 2019</span></li>
+          <li><span>Compromiso y Entusiasmo del Año<small>Piper Ingenieros</small></span><span class="date">Dic. 2018</span></li>
+          <li><span>Certificate of Appreciation for Excellence<small>PMI · contribución voluntaria</small></span><span class="date">2017</span></li>
+        </ul>
+      </article>
     </div>
 
-    <div class="tl-item rv">
-      <div class="tl-dot"></div>
-      <div class="tl-top">
-        <div class="tl-role">Consultor TI — Scrum Master</div>
-        <div class="tl-date">May. 2019 — Ene. 2020</div>
-      </div>
-      <div class="tl-company"><strong>Ernst & Young (EY)</strong></div>
-      <div class="tl-client">▸ Cliente: Nexa Resources Perú y Brasil</div>
-      <ul class="tl-list">
-        <li>Lideré la implementación de MineMarket en Azure (IaaS/PaaS), coordinando equipos SAP, Bloomberg y Power BI.</li>
-        <li>Actué como Scrum Master del proyecto 'Valores'; facilité sprints y aseguré la entrega en plazo.</li>
-      </ul>
-      <div class="tl-chips"><span class="tl-chip">Azure</span><span class="tl-chip">Scrum Master</span><span class="tl-chip">PI System</span><span class="tl-chip">SAP</span><span class="tl-chip">Power BI</span></div>
+    <div class="edu-strip">
+      <article class="card rv">
+        <span class="k">Formación de grado</span>
+        <h4>Ingeniero de Sistemas Computacionales</h4>
+        <p>Universidad Privada del Norte · Título Jun. 2025 · Bachiller Oct. 2016 · Colegiado CIP N° 380044</p>
+      </article>
+      <article class="card rv">
+        <span class="k">Diplomados de posgrado · UPN</span>
+        <h4>Procesos y Mejora Continua · Seguridad de la Información y Auditoría</h4>
+        <p>Menciones en Transformación Digital (2023) y Ciencia de Datos (2022)</p>
+      </article>
+      <article class="card rv">
+        <span class="k">Especializaciones · UPN</span>
+        <h4>ISO 9001 · Mejora Continua · Big Data · SGSI ISO 27001</h4>
+        <p>2023 – 2022 · más de 800 horas</p>
+      </article>
     </div>
-
-    <div class="tl-item rv">
-      <div class="tl-dot"></div>
-      <div class="tl-top">
-        <div class="tl-role">PI System Engineer — Líder Técnico</div>
-        <div class="tl-date">Ene. 2018 — May. 2019</div>
-      </div>
-      <div class="tl-company"><strong>Piper Ingenieros S.A.C.</strong></div>
-      <div class="tl-client">▸ Buenaventura · Barrick Pierina · Antamina · Yanacocha · Las Bambas · H.E. Cerro del Águila</div>
-      <ul class="tl-list">
-        <li>Implementé PI System en entornos multivendor (Rockwell, Schneider, Siemens PCS7, ABB) con interfaces OPC-DA/UA y failover activo-pasivo.</li>
-        <li>Desarrollé reportes PI DataLink, PI Vision y Power BI para balance metalúrgico y gestión de aguas.</li>
-        <li>Impartí el curso 'PI System — Herramientas de Visualización' como instructor en Barrick Pierina (2019).</li>
-        <li>Reconocimiento: <strong>Compromiso y Entusiasmo del Año</strong> — Piper Ingenieros 2018.</li>
-      </ul>
-      <div class="tl-chips"><span class="tl-chip">OPC-DA/UA</span><span class="tl-chip">PI Vision</span><span class="tl-chip">AF Analytics</span><span class="tl-chip">IEC 61850</span><span class="tl-chip">Power BI</span></div>
-    </div>
-
   </div>
 </section>
 
-<hr class="sec-divider">
+<!-- ── 02 Operaciones ──────────────────────────────── -->
+<section class="sec" id="operaciones">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow">02 · Operaciones Atendidas</div>
+        <h2>Donde un dato caído<br><span class="dim">detiene la planta.</span></h2>
+      </div>
+      <p class="sec-sub rv">Minería a tajo abierto y socavón por encima de los 3 500 m s. n. m., generación hidroeléctrica, telecomunicaciones y sector público. Cada una tiene su propia arquitectura, sus proveedores OT y su presión regulatoria.</p>
+    </div>
 
-<!-- ═══════ CERTIFICATIONS ═══════ -->
-<section class="sec" id="certifications">
-  <div class="sec-eyebrow">05 — Certificaciones</div>
-  <h2 class="sec-title">Credenciales &<br><span class="acc">Acreditaciones</span></h2>
+    <div class="ops-top">
+      <article class="card op-feature rv">
+        <span class="live-tag"><i class="dot-live"></i>Operación actual · Sep. 2021 – hoy</span>
+        <h3>Compañía Minera del Pacífico</h3>
+        <div class="where">Chile · Hierro · Plataforma PI multisitio · vía CONTAC Ingenieros</div>
+        <ul>
+          <li>Administración 24/7 de PI Data Archive, AF, PI Vision 2022, Web API, Notifications y SQL DAS, con disponibilidad &gt; 99,5 %.</li>
+          <li>Reportabilidad regulatoria en tiempo real ante la DGA y la SMA (Node-RED, PI Web API, MQTT).</li>
+          <li>Gobierno de datos sobre ~50 000 tags y 141 PointSources; cierre de 4 hallazgos de una auditoría de seguridad externa.</li>
+        </ul>
+      </article>
+      <div class="ops-stats">
+        <div class="card rv"><span class="k">Países</span><div><div class="n"><span data-count="3">3</span></div><p>Perú, Chile y Brasil</p></div></div>
+        <div class="card rv"><span class="k">Mineras</span><div><div class="n"><span data-count="8">8</span></div><p>de gran escala, a tajo abierto y en socavón</p></div></div>
+        <div class="card rv"><span class="k">Proveedores OT</span><div><div class="n"><span data-count="4">4</span>+</div><p>Rockwell, Siemens PCS7, ABB, Schneider</p></div></div>
+        <div class="card rv"><span class="k">Interfaces RDBMS</span><div><div class="n"><span data-count="19">19</span></div><p>con reinicio automático tras corregir un fallo crítico</p></div></div>
+      </div>
+    </div>
 
-  <div class="cert-grid">
-    <div class="cert-card rv"><div class="cert-cat">AVEVA / OSIsoft</div><div class="cert-name">AVEVA PI Systems — Exam Path (Profesional 2026)</div><div class="cert-footer"><span class="cert-issuer">AVEVA Learning</span><span class="cert-date">Ene. 2026</span></div></div>
-    <div class="cert-card rv d1"><div class="cert-cat">AVEVA / OSIsoft</div><div class="cert-name">AVEVA PI Infrastructure Specialist Certification Exam</div><div class="cert-footer"><span class="cert-issuer">AVEVA Learning</span><span class="cert-date">Sep. 2025</span></div></div>
-    <div class="cert-card rv d2"><div class="cert-cat">AVEVA / OSIsoft</div><div class="cert-name">AVEVA PI Installation Specialist Certification Exam</div><div class="cert-footer"><span class="cert-issuer">AVEVA Learning</span><span class="cert-date">Sep. 2025</span></div></div>
-    <div class="cert-card rv"><div class="cert-cat">AVEVA / OSIsoft</div><div class="cert-name">Asset Framework: Beyond the Basics — Certification Module</div><div class="cert-footer"><span class="cert-issuer">AVEVA Learning</span><span class="cert-date">Sep. 2025</span></div></div>
-    <div class="cert-card rv d1"><div class="cert-cat">AVEVA / OSIsoft</div><div class="cert-name">PI Vision Installation & Migration from PI ProcessBook</div><div class="cert-footer"><span class="cert-issuer">AVEVA Learning</span><span class="cert-date">Sep. 2025</span></div></div>
-    <div class="cert-card rv d2"><div class="cert-cat">AVEVA / OSIsoft</div><div class="cert-name">PI System Infrastructure Specialist Accreditation</div><div class="cert-footer"><span class="cert-issuer">OSIsoft Partner Ecosphere</span><span class="cert-date">Feb. 2019</span></div></div>
-    <div class="cert-card rv"><div class="cert-cat">Gestión TI</div><div class="cert-name">ITIL® 4 Foundation Certificate in IT Service Management</div><div class="cert-footer"><span class="cert-issuer">AXELOS / PeopleCert</span><span class="cert-date">Mar. 2021</span></div></div>
-    <div class="cert-card rv d1"><div class="cert-cat">Ciberseguridad</div><div class="cert-name">Lead Cybersecurity Professional Certification (LCSPC™)</div><div class="cert-footer"><span class="cert-issuer">CertiProf</span><span class="cert-date">Ene. 2023</span></div></div>
-    <div class="cert-card rv d2"><div class="cert-cat">Microsoft</div><div class="cert-name">MCSA: Windows Server 2016</div><div class="cert-footer"><span class="cert-issuer">Microsoft</span><span class="cert-date">Abr. 2017</span></div></div>
-    <div class="cert-card rv"><div class="cert-cat">Redes</div><div class="cert-name">Cisco Certified Network Associate (CCNA) Routing & Switching</div><div class="cert-footer"><span class="cert-issuer">Cisco Systems</span><span class="cert-date">Mar. 2015</span></div></div>
-    <div class="cert-card rv d1"><div class="cert-cat">Gestión de Proyectos</div><div class="cert-name">Especialización: Dirección de Proyectos — PMI (120 h · Nota 20/20)</div><div class="cert-footer"><span class="cert-issuer">Netcram / CIP Pasco</span><span class="cert-date">Abr. 2026</span></div></div>
-    <div class="cert-card rv d2"><div class="cert-cat">Ágil</div><div class="cert-name">Scrum Master Professional Certificate (SMPC®) + SPOPC</div><div class="cert-footer"><span class="cert-issuer">CertiProf</span><span class="cert-date">Ago. 2020</span></div></div>
+    <div class="filters rv" role="group" aria-label="Filtrar operaciones por sector">
+      <button class="filter" data-filter="all" aria-pressed="true">Todas</button>
+      <button class="filter" data-filter="mineria" aria-pressed="false">Minería</button>
+      <button class="filter" data-filter="energia" aria-pressed="false">Energía</button>
+      <button class="filter" data-filter="telecom" aria-pressed="false">Telecom y sector público</button>
+    </div>
+
+    <div class="ops-grid" id="ops">
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú</span><span class="date">2022</span></div><h4>Las Bambas</h4><p>Lideré el desarrollo de la gestión de alarmas de activos críticos sobre todo el stack PI System.</p><div class="via">Soluciones Globales con TI</div></article>
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú</span><span class="date">2022</span></div><h4>Antamina</h4><p>Analytics de AF, balance metalúrgico y reportes para la operación.</p><div class="via">Soluciones Globales con TI</div></article>
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú</span><span class="date">2020</span></div><h4>Gold Fields · Cerro Corona</h4><p>Administración de infraestructura TI/OT del site y recuperación de servicios críticos tras un ataque de ransomware.</p><div class="via">Grupo Electrodata</div></article>
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú y Brasil</span><span class="date">2019 – 2020</span></div><h4>Nexa Resources</h4><p>Plataforma comercial MineMarket en Azure integrada con SAP, Bloomberg y Power BI. Scrum Master.</p><div class="via">Ernst &amp; Young</div></article>
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú</span><span class="date">2018 – 2019</span></div><h4>Barrick Pierina</h4><p>Portales gerenciales para gestión de aguas, balances metalúrgicos con PI DataLink e instructor de PI Vision.</p><div class="via">Piper Ingenieros</div></article>
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú</span><span class="date">2018 – 2019</span></div><h4>Buenaventura</h4><p>PI System en 5 unidades mineras, en un entorno multiproveedor con interfaces OPC y modelos AF.</p><div class="via">Piper Ingenieros</div></article>
+      <article class="card op" data-sector="mineria"><div class="op-head"><span class="k">Minería · Perú</span><span class="date">2018 – 2019</span></div><h4>Yanacocha</h4><p>Soporte y evolución de la plataforma PI System.</p><div class="via">Piper Ingenieros</div></article>
+      <article class="card op" data-sector="energia"><div class="op-head"><span class="k">Energía · Perú</span><span class="date">2019</span></div><h4>H.E. Cerro del Águila</h4><p>Telemetría de caudales, niveles y generación sobre IEC 61850.</p><div class="via">Piper Ingenieros</div></article>
+      <article class="card op" data-sector="telecom"><div class="op-head"><span class="k">Telecomunicaciones · Perú</span><span class="date">SOGOTI</span></div><h4>Telefónica del Perú</h4><p>Soporte multinivel N1/N2/N3 e infraestructura.</p><div class="via">Soluciones Globales con TI</div></article>
+      <article class="card op" data-sector="telecom"><div class="op-head"><span class="k">Telecomunicaciones · Perú</span><span class="date">SOGOTI</span></div><h4>Claro Perú</h4><p>Soporte multinivel N1/N2/N3.</p><div class="via">Soluciones Globales con TI</div></article>
+      <article class="card op" data-sector="telecom"><div class="op-head"><span class="k">Sector público · Perú</span><span class="date">SOGOTI</span></div><h4>MINEDU · Cajamarca</h4><p>Mantenimiento de sistemas educativos en la región.</p><div class="via">Soluciones Globales con TI</div></article>
+    </div>
   </div>
 </section>
 
-<hr class="sec-divider">
+<!-- ── 03 PI System ────────────────────────────────── -->
+<section class="sec" id="pi-system">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow">03 · Dominio PI System</div>
+        <h2>No solo opero la plataforma.<br><span class="dim">Construyo sobre ella.</span></h2>
+      </div>
+      <p class="sec-sub rv">Cuando la herramienta estándar no alcanza, desarrollo la que falta: auditoría de tags, autorecuperación de interfaces, monitoreo de calidad de datos y componentes visuales a medida.</p>
+    </div>
 
-<!-- ═══════ CLIENTS ═══════ -->
-<section class="sec" id="clients">
-  <div class="sec-eyebrow">06 — Clientes y Sectores</div>
-  <h2 class="sec-title">Operaciones<br><span class="acc">Atendidas</span></h2>
+    <div class="stack">
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+        <h3>Administración y arquitectura</h3>
+        <p>Plataformas multisitio, alta disponibilidad, migraciones y seguridad de la plataforma.</p>
+        <div class="chips"><span class="chip">Data Archive</span><span class="chip">AF</span><span class="chip">SMT</span><span class="chip">Connector Relay</span><span class="chip">DCM</span></div>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Modelado y analítica</h3>
+        <p>Jerarquías AF para molienda, flotación y filtración, con alertas en tiempo real sobre activos críticos.</p>
+        <div class="chips"><span class="chip">Analytics</span><span class="chip">Event Frames</span><span class="chip">Notifications</span><span class="chip">Predictive</span></div>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 13l3-3 2 2 5-5"/></svg></div>
+        <h3>Visualización e integración</h3>
+        <p>Pantallas bajo ISA-101, extensibilidad en JavaScript y APIs hacia otros sistemas.</p>
+        <div class="chips"><span class="chip">PI Vision</span><span class="chip">Web API</span><span class="chip">AF SDK</span><span class="chip">SQL DAS</span></div>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Infraestructura TI/OT</h3>
+        <p>Servidores, virtualización y hardening de los servidores que sostienen la plataforma PI.</p>
+        <div class="chips"><span class="chip">Windows Server</span><span class="chip">IIS · TLS</span><span class="chip">VMware</span><span class="chip">SQL Server</span></div>
+      </article>
+    </div>
 
-  <div class="clients-grid">
-    <div class="client-card rv"><div class="client-sector">Minería · Chile</div><div class="client-name">CMP</div><div class="client-detail">Compañía Minera del Pacífico · PI System, DGA/SMA · 2021–Actualidad</div></div>
-    <div class="client-card rv d1"><div class="client-sector">Minería · Perú</div><div class="client-name">Antamina</div><div class="client-detail">PI System, AF Analytics, balance metalúrgico · 2016–2019</div></div>
-    <div class="client-card rv d2"><div class="client-sector">Minería · Perú</div><div class="client-name">Las Bambas</div><div class="client-detail">PI System, auditoría, gestión de alarmas · 2018–2021</div></div>
-    <div class="client-card rv"><div class="client-sector">Minería · Perú</div><div class="client-name">Goldfields — Cerro Corona</div><div class="client-detail">Infraestructura TI/OT, Ransomware recovery · 2020</div></div>
-    <div class="client-card rv d1"><div class="client-sector">Minería · Perú</div><div class="client-name">Barrick Pierina</div><div class="client-detail">PI System, gestión de aguas, instructor · 2018–2019</div></div>
-    <div class="client-card rv d2"><div class="client-sector">Minería · Perú</div><div class="client-name">Buenaventura</div><div class="client-detail">PI System, OPC, modelos AF · 2018–2019</div></div>
-    <div class="client-card rv"><div class="client-sector">Minería · Perú</div><div class="client-name">Yanacocha</div><div class="client-detail">PI System, soporte · 2018–2019</div></div>
-    <div class="client-card rv d1"><div class="client-sector">Minería · Int'l</div><div class="client-name">Nexa Resources</div><div class="client-detail">Perú & Brasil · MineMarket Azure · 2019–2020</div></div>
-    <div class="client-card rv d2"><div class="client-sector">Energía · Perú</div><div class="client-name">H.E. Cerro del Águila</div><div class="client-detail">PI System, telemetría hidráulica, IEC 61850 · 2019</div></div>
-    <div class="client-card rv"><div class="client-sector">Telecomunicaciones</div><div class="client-name">Telefónica del Perú</div><div class="client-detail">Soporte N1/N2/N3, infraestructura · SOGOTI</div></div>
-    <div class="client-card rv d1"><div class="client-sector">Telecomunicaciones</div><div class="client-name">Claro Perú</div><div class="client-detail">Soporte N1/N2/N3 · SOGOTI</div></div>
-    <div class="client-card rv d2"><div class="client-sector">Sector Público</div><div class="client-name">MINEDU</div><div class="client-detail">Sistemas educativos, región Cajamarca · SOGOTI</div></div>
+    <div class="builds">
+      <article class="card build rv">
+        <div class="metric grad">−70 %</div>
+        <h4>Reporte mensual automatizado</h4>
+        <p>Pipeline que reduce en más de un 70 % el tiempo de elaboración del informe de servicio.</p>
+        <div class="stackline">Python · Node.js · PI Web API · AF SDK</div>
+      </article>
+      <article class="card build rv">
+        <div class="metric grad">19</div>
+        <h4>Interfaces que se recuperan solas</h4>
+        <p>Detección de caídas con Event Frames y reinicio automático cada 5 min. Eliminó la intervención manual.</p>
+        <div class="stackline">PowerShell · Event Frames · RDBMSPI</div>
+      </article>
+      <article class="card build rv">
+        <div class="metric grad">18</div>
+        <h4>Símbolos PI Vision a medida</h4>
+        <p>Componentes propios llevados de DEV a QA y a PROD, bajo un estándar corporativo de pantallas ISA-101.</p>
+        <div class="stackline">JavaScript · HTML/CSS · SVG</div>
+      </article>
+      <article class="card build rv">
+        <div class="metric grad">v2.3</div>
+        <h4>PI Admin</h4>
+        <p>Rastrea el uso de cada tag en Data Archive, AF, SIP, SEP y PI Vision antes de darlo de baja.</p>
+        <div class="stackline">VBA · PowerShell · SQL</div>
+      </article>
+      <article class="card build rv">
+        <div class="metric grad">12</div>
+        <h4>Sprints de PPSW Watchtower</h4>
+        <p>Monitoreo de la calidad de datos de PI, con LLD completo y 50 historias de usuario.</p>
+        <div class="stackline">.NET 8 · AF SDK · Scrum</div>
+      </article>
+      <article class="card build rv">
+        <div class="metric grad">223</div>
+        <h4>Tags históricos corregidos</h4>
+        <p>Corrección masiva en producción y migración de los históricos de Recepción de Camiones.</p>
+        <div class="stackline">PowerShell · PI Data Archive</div>
+      </article>
+    </div>
+
+    <div class="protocols rv">
+      <span class="k">Protocolos</span>
+      <span class="chip">OPC DA</span><span class="chip">OPC HDA</span><span class="chip">OPC UA</span><span class="chip">Modbus TCP/RTU</span>
+      <span class="chip">IEC 61850</span><span class="chip">IEC 104</span><span class="chip">DNP3</span><span class="chip">MQTT</span><span class="chip">UFL</span><span class="chip">PItoPI</span>
+    </div>
   </div>
 </section>
 
-<hr class="sec-divider">
+<!-- ── 04 Gestión ──────────────────────────────────── -->
+<section class="sec" id="gestion">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow">04 · Gestión de Proyectos</div>
+        <h2>Ingeniería con método.<br><span class="dim">Entregas sin sorpresas.</span></h2>
+      </div>
+      <p class="sec-sub rv">Planifico, gobierno y mido. Combino PMBOK, Scrum e ITIL según lo que pida cada proyecto, y lo dejo documentado para que el equipo pueda repetirlo.</p>
+    </div>
 
-<!-- ═══════ EDUCATION ═══════ -->
-<section class="sec" id="education">
-  <div class="sec-eyebrow">07 — Formación Académica</div>
-  <h2 class="sec-title">Educación &<br><span class="acc">Posgrado</span></h2>
-
-  <div class="edu-grid">
-    <div class="edu-card rv"><div class="edu-icon">🎓</div><div class="edu-degree">Título — Ing. Sistemas Computacionales</div><div class="edu-school">Universidad Privada del Norte (UPN) · Cajamarca</div><div class="edu-year">Junio 2025</div><div class="edu-detail">Trabajo de Suficiencia Profesional · Res. 042-2025-UPN · CIP N° 380044</div></div>
-    <div class="edu-card rv d1"><div class="edu-icon">📜</div><div class="edu-degree">Bachiller — Ing. Sistemas Computacionales</div><div class="edu-school">Universidad Privada del Norte (UPN) · Cajamarca</div><div class="edu-year">Octubre 2016</div><div class="edu-detail">Res. 067-2016-UPN-SAC · Diploma B03031</div></div>
-    <div class="edu-card rv d2"><div class="edu-icon">🔐</div><div class="edu-degree">Diplomado Seguridad de la Información & Auditoría</div><div class="edu-school">UPN Escuela de Posgrado · mención Ciencia de Datos</div><div class="edu-year">Abr. 2022 – Dic. 2022</div><div class="edu-detail">566 h · 25.1 créditos</div></div>
-    <div class="edu-card rv"><div class="edu-icon">⚡</div><div class="edu-degree">Diplomado Procesos & Mejora Continua</div><div class="edu-school">UPN Escuela de Posgrado · mención Transformación Digital</div><div class="edu-year">Feb. 2023 – Nov. 2023</div><div class="edu-detail">556 h · 25.6 créditos</div></div>
-    <div class="edu-card rv d1"><div class="edu-icon">🛡️</div><div class="edu-degree">4 Especializaciones: SGSI · Big Data · Mejora Continua · ISO 9001</div><div class="edu-school">UPN Escuela de Posgrado</div><div class="edu-year">2022 – 2023</div><div class="edu-detail">800+ horas · 38 créditos</div></div>
-    <div class="edu-card rv d2"><div class="edu-icon">🌍</div><div class="edu-degree">Programa de Lengua Portuguesa (certificado)</div><div class="edu-school">UPN · Inglés B2/C1 técnico</div><div class="edu-year">Mar. – Ago. 2023</div><div class="edu-detail">368 h · 19 créditos</div></div>
+    <div class="pm">
+      <div class="frameworks rv">
+        <div class="fw"><b>PMBOK 7</b><span>Planificación, alcance e interesados</span></div>
+        <div class="fw"><b>Scrum</b><span>SMPC® · SPOPC · sprints y backlog</span></div>
+        <div class="fw"><b>ITIL 4</b><span>Incidentes, problemas, cambios y SLA</span></div>
+        <div class="fw"><b>COBIT 2019</b><span>Gobierno y control de TI</span></div>
+        <div class="fw"><b>ISO 27001 · NIST</b><span>Seguridad de la información</span></div>
+        <div class="fw"><b>RCA · 5-Why</b><span>Causa raíz y mejora continua</span></div>
+      </div>
+      <div class="evidence">
+        <article class="card ev rv"><div class="n">22<small>hojas</small></div><div><h4>Framework de despliegue CONTAC-FW-DEPLOY-001</h4><p>Estándar de paso DEV → QA → PROD basado en COBIT, ITIL, PMBOK, ISO y NIST para la plataforma PI.</p></div></article>
+        <article class="card ev rv"><div class="n">12<small>sprints</small></div><div><h4>PPSW Watchtower</h4><p>Preparé los ambientes, modelé AF y validé cada entrega, desde el diseño de bajo nivel hasta la puesta en producción.</p></div></article>
+        <article class="card ev rv"><div class="n">Scrum<small>Master</small></div><div><h4>Proyecto "Valores" · Nexa Resources</h4><p>Facilité los equipos de desarrollo e integración en EY. Entregamos dentro del plazo.</p></div></article>
+        <article class="card ev rv"><div class="n">24/7<small>soporte</small></div><div><h4>Liderazgo técnico del servicio en CMP</h4><p>Proyectos evolutivos de activos críticos, medio ambiente, integración y monitoreo de infraestructura.</p></div></article>
+      </div>
+    </div>
   </div>
 </section>
 
-<hr class="sec-divider">
+<!-- ── 05 Detalle (plegable) ───────────────────────── -->
+<section class="sec" id="detalle">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv">
+        <div class="eyebrow">05 · En detalle</div>
+        <h2>Trayectoria e IA aplicada.<br><span class="dim">Ábrelas cuando lo necesites.</span></h2>
+      </div>
+    </div>
 
-<!-- ═══════ RECOGNITION ═══════ -->
-<section class="sec" id="recognition">
-  <div class="sec-eyebrow">08 — Reconocimientos</div>
-  <h2 class="sec-title">Logros &<br><span class="acc">Afiliaciones</span></h2>
+    <div class="duo">
+      <details class="card drawer rv" id="trayectoria">
+        <summary>
+          <div><h3>Trayectoria Profesional</h3><p>7 roles · 2014 – hoy · del más reciente al más antiguo</p></div>
+          <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="drawer-body">
+          <details class="job" open>
+            <summary><span class="job-role">Especialista Senior PI System</span><span class="job-co">CONTAC Ingenieros · Cliente: CMP, Chile</span><span class="job-date now">Sep. 2021 – hoy</span></summary>
+            <ul>
+              <li>Administro la plataforma PI multisitio con continuidad 24/7 y <strong>disponibilidad &gt; 99,5 %</strong>.</li>
+              <li>Integré Node-RED con PI Web API y MQTT para la <strong>reportabilidad regulatoria</strong> ante la DGA y la SMA.</li>
+              <li>Desarrollé PI Admin, PPSW Watchtower, 18 símbolos PI Vision y la automatización del reporte mensual (−70 %).</li>
+              <li>Lidero técnicamente los proyectos evolutivos y al equipo de soporte. Cerré 4 hallazgos de una auditoría de seguridad externa.</li>
+            </ul>
+          </details>
+          <details class="job">
+            <summary><span class="job-role">Administrador de Infraestructura TI/OT</span><span class="job-co">Grupo Electrodata · Cliente: Gold Fields</span><span class="job-date">Ene. – Dic. 2020</span></summary>
+            <ul>
+              <li>Administré servidores Windows y Linux, VMware, AD, SQL Server, PI System, Dispatch y Datamine, además de la seguridad perimetral.</li>
+              <li>Restablecí los servicios críticos tras un <strong>ataque de ransomware</strong>. Implementé controles SOX y documenté la infraestructura para ISO 27001.</li>
+            </ul>
+          </details>
+          <details class="job">
+            <summary><span class="job-role">Consultor TI y Scrum Master</span><span class="job-co">Ernst &amp; Young · Cliente: Nexa Resources</span><span class="job-date">May. 2019 – Ene. 2020</span></summary>
+            <ul>
+              <li>Implementé MineMarket en Azure (IaaS/PaaS) y coordiné a los equipos de SAP, Bloomberg y Power BI.</li>
+              <li>Fui Scrum Master del proyecto "Valores".</li>
+            </ul>
+          </details>
+          <details class="job">
+            <summary><span class="job-role">Ingeniero PI System y Líder Técnico</span><span class="job-co">Piper Ingenieros · 3 operaciones mineras y 1 hidroeléctrica</span><span class="job-date">Ene. 2018 – May. 2019</span></summary>
+            <ul>
+              <li>Implementé PI System con proveedores OT diversos (Rockwell, Schneider, Siemens PCS7, ABB), interfaces OPC y failover.</li>
+              <li>Desarrollé reportes en PI DataLink, PI Vision y Power BI. Fui instructor de PI System en Barrick (2019).</li>
+            </ul>
+          </details>
+          <details class="job">
+            <summary><span class="job-role">Fundador y Gerente General</span><span class="job-co">Soluciones Globales con TI · en paralelo al empleo principal</span><span class="job-date">Sep. 2016 – Dic. 2025</span></summary>
+            <ul>
+              <li>Proyectos PI System para <strong>Las Bambas</strong> (gestión de alarmas de activos críticos) y <strong>Antamina</strong> (2022).</li>
+              <li>Dirigí una empresa de software y servicios TI: ERP, plataformas web y académicas, soporte N1/N2/N3 y nube (Azure, AWS).</li>
+              <li>Automaticé procesos con Node-RED y N8N y construí dashboards en tiempo real.</li>
+            </ul>
+          </details>
+          <details class="job">
+            <summary><span class="job-role">Coordinador de TI</span><span class="job-co">Municipalidad Distrital de Sucre</span><span class="job-date">Feb. 2016 – Dic. 2017</span></summary>
+            <ul><li>Administré los sistemas internos y coordiné los proyectos de redes e internet del distrito.</li></ul>
+          </details>
+          <details class="job">
+            <summary><span class="job-role">Docente de Desarrollo de Software</span><span class="job-co">IESTP Celendín e IESTP Computrón</span><span class="job-date">2014 – Ene. 2018</span></summary>
+            <ul><li>Enseñé programación web, bases de datos, redes y dirección de proyectos.</li></ul>
+          </details>
+        </div>
+      </details>
 
-  <div class="rec-grid">
-    <div class="rec-card rv"><div class="rec-ico">🏅</div><div class="rec-body"><strong>Compromiso y Entusiasmo del Año</strong><p>Piper Ingenieros · Diciembre 2018</p></div></div>
-    <div class="rec-card rv d1"><div class="rec-ico">🎖️</div><div class="rec-body"><strong>Instructor PI System Certificado</strong><p>Minera Barrick Pierina · Marzo 2019</p></div></div>
-    <div class="rec-card rv d2"><div class="rec-ico">🌐</div><div class="rec-body"><strong>Apreciación PMI Board — 2017</strong><p>Voluntary Contributions to the Project Management Profession</p></div></div>
-    <div class="rec-card rv"><div class="rec-ico">⚙️</div><div class="rec-body"><strong>Miembro CIP N° 380044</strong><p>Colegio de Ingenieros del Perú · oct. 2025</p></div></div>
-    <div class="rec-card rv d1"><div class="rec-ico">📐</div><div class="rec-body"><strong>Miembro PMI Cajamarca</strong><p>PMI Cajamarca Peru Chapter · Desde 2015</p></div></div>
-    <div class="rec-card rv d2"><div class="rec-ico">🏢</div><div class="rec-body"><strong>Fundador — SOGOTI</strong><p>Empresa de integración tecnológica · 9 años · RUC 20601656311</p></div></div>
+      <details class="card drawer rv" id="ia">
+        <summary>
+          <div><h3>Ecosistema AI Aplicado</h3><p>Soluciones reales sobre PI System, no solo herramientas</p></div>
+          <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="drawer-body">
+          <div class="ai-item"><b>Displays PI Vision generados con IA (PoC)</b><p>Un mockup en PNG se convierte en una pantalla PI Vision funcional: un LLM interpreta la imagen y Python genera el JSON nativo.</p></div>
+          <div class="ai-item"><b>Prompt Maestro v2.0 para PI Vision</b><p>Estandariza el diseño de pantallas según ISA-101 y la matriz de variables corporativa.</p></div>
+          <div class="ai-item"><b>Analítica predictiva</b><p>AVEVA Predictive Analytics (Admin y Client) aplicada a la detección de anomalías y al mantenimiento predictivo sobre datos PI.</p></div>
+          <div class="ai-item"><b>Ingeniería asistida por IA</b><p>Código, RCA, LLD y manuales técnicos producidos con asistentes de IA, con revisión técnica humana.</p></div>
+          <div class="ai-item"><b>Orquestación</b><p>Flujos N8N y Node-RED para pipelines de datos y reportes automáticos.</p></div>
+          <div class="ai-tools"><span class="chip acc">Claude</span><span class="chip acc">ChatGPT</span><span class="chip">Copilot</span><span class="chip">Gemini</span><span class="chip">NotebookLM</span><span class="chip">Napkin AI</span><span class="chip">N8N</span></div>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
-<!-- ═══════ CONTACT ═══════ -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="sec-eyebrow rv" style="justify-content:center;color:rgba(255,255,255,.5)">09 — Contacto</div>
-    <h2 class="contact-title rv">¿Listo para colaborar?</h2>
-    <p class="contact-sub rv">Disponible para proyectos de integración de sistemas, liderazgo técnico y gestión de servicios TI/OT.<br>Abierto a régimen minero 14×7 y relocation nacional e internacional.</p>
+</main>
+
+<!-- ── Contacto ────────────────────────────────────── -->
+<footer class="contact" id="contacto">
+  <div class="wrap contact-in">
+    <div class="eyebrow rv" style="justify-content:center">Contacto</div>
+    <h2 class="rv">Hablemos de su<br><span class="grad">plataforma PI.</span></h2>
+    <p class="lead rv">Administración, integración, evolución o un proyecto nuevo sobre AVEVA PI System.</p>
     <div class="contact-links rv">
-      <a href="mailto:hagy_se@outlook.es" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hagy_se@outlook.es</a>
-      <a href="tel:+51997658881" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/></svg>+51 997 658 881</a>
-      <a href="https://linkedin.com/in/henry-gallardo-yntor" target="_blank" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-      <div class="c-link" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Cajamarca, Perú</div>
+      <a class="btn btn-primary" href="mailto:hagy_se@outlook.es">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>hagy_se@outlook.es
+      </a>
+      <a class="btn" href="https://linkedin.com/in/henry-gallardo-yntor" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn
+      </a>
+      <a class="btn" href="tel:+51997658881">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+51 997 658 881
+      </a>
     </div>
-    <div class="footer-copy">© 2026 Henry Alejandro Gallardo Yntor · CV Web Versión 1.3 Light · Documentos respaldo disponibles en formato DOCX/PDF</div>
+    <div class="foot">
+      <span>© 2026 Henry Alejandro Gallardo Yntor</span>
+      <span>Español nativo · Inglés B2 · Portugués B1</span>
+      <span>Cajamarca, Perú</span>
+    </div>
   </div>
-</section>
+</footer>
 
 <script>
-// Reveal
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target) } });
-}, { threshold: .1 });
-document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+document.body.classList.remove('no-js');
 
-// Skill bars
-const bObs = new IntersectionObserver(es => {
-  es.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.bar-fill[data-w]').forEach(b => {
-        setTimeout(() => { b.style.width = b.dataset.w + '%' }, 150);
-      });
-      bObs.unobserve(e.target);
-    }
-  });
-}, { threshold: .25 });
-document.querySelectorAll('.skill-block').forEach(el => bObs.observe(el));
-
-// Counters
-function countUp(el) {
-  const n = parseInt(el.dataset.count), sfx = el.dataset.sfx || '+';
-  const dur = 1600, start = performance.now();
-  function step(now) {
-    const p = Math.min((now - start) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.floor(ease * n) + (p === 1 ? sfx : '');
-    if (p < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-const cObs = new IntersectionObserver(es => {
-  es.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('[data-count]').forEach(countUp);
-      cObs.unobserve(e.target);
-    }
-  });
-}, { threshold: .4 });
-document.querySelectorAll('.hero-card, .stats-grid').forEach(el => cObs.observe(el));
-
-// Nav active
-const secs = document.querySelectorAll('section[id], div[id]');
-const nls = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 220) cur = s.id });
-  nls.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--blue-2)' : '';
-  });
+// Navegación: fondo al hacer scroll + enlace activo
+const nav = document.getElementById('nav');
+const links = [...document.querySelectorAll('.nav-links a')];
+const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', scrollY > 12);
+  let cur = -1;
+  sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 160) cur = i });
+  links.forEach((a, i) => a.classList.toggle('active', i === cur));
 }, { passive: true });
+
+// Aparición al entrar en pantalla
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target) } });
+}, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 70 + 'ms';
+  io.observe(el);
+});
+
+// Contadores
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const counter = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    counter.unobserve(e.target);
+    if (reduce) return;
+    const el = e.target, end = +el.dataset.count, t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / 1400, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}, { threshold: .6 });
+document.querySelectorAll('[data-count]').forEach(el => counter.observe(el));
+
+// Pestañas de la consola (con teclado)
+const tabs = [...document.querySelectorAll('.tab')];
+function selectTab(tab) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on);
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+}
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => selectTab(t));
+  t.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+    selectTab(next); next.focus();
+  });
+});
+
+// Efecto spotlight en tarjetas
+document.querySelectorAll('.card').forEach(c => {
+  c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', e.clientX - r.left + 'px');
+    c.style.setProperty('--my', e.clientY - r.top + 'px');
+  });
+});
+
+// Filtro de operaciones
+const filters = [...document.querySelectorAll('.filter')];
+filters.forEach(f => f.addEventListener('click', () => {
+  filters.forEach(b => b.setAttribute('aria-pressed', b === f));
+  document.querySelectorAll('#ops .op').forEach(op => {
+    op.classList.toggle('is-hidden', f.dataset.filter !== 'all' && op.dataset.sector !== f.dataset.filter);
+  });
+}));
 </script>
 </body>
 </html>
